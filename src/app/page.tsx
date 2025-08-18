@@ -1,130 +1,147 @@
-import Image from "next/image";
+import React from "react";
+
+function PlaceholderTile({
+  label,
+  aspect = "aspect-[4/3]",
+  rounded = "rounded-[1.25rem]",
+}: {
+  label: string;
+  aspect?: string;
+  rounded?: string;
+}) {
+  return (
+    <div
+      className={[
+        "relative overflow-hidden ring-1 ring-stone-200",
+        "bg-gradient-to-br from-emerald-100 to-emerald-200/60",
+        "grid place-items-center",
+        aspect,
+        rounded,
+      ].join(" ")}
+    >
+      <div className="text-stone-700 text-xs sm:text-sm text-center px-4">
+        <strong>Image placeholder</strong>
+        <br />
+        Add <code>{label}</code> to <code>/public</code>
+      </div>
+    </div>
+  );
+}
 
 export default function HomePage() {
   return (
     <main>
-      {/* Header */}
-      <header className="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-neutral-950/60 border-b border-neutral-800">
-        <div className="mx-auto max-w-6xl px-5 py-3 flex items-center justify-between">
-          <a href="#hero" className="font-semibold tracking-wide">Sabor Selva</a>
-          <nav className="hidden sm:flex gap-6 text-sm text-neutral-300">
-            <a href="#story" className="hover:text-white">Our Story</a>
-            <a href="#products" className="hover:text-white">Products</a>
-            <a href="#sustainability" className="hover:text-white">Sustainability</a>
-            <a href="#contact" className="hover:text-white">Stay Updated</a>
+      {/* Sticky Header */}
+      <header className="sticky top-0 z-50 border-b border-stone-200 bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/70">
+        <div className="mx-auto max-w-6xl px-6 py-3 flex items-center justify-between">
+          <a href="#" className="text-base font-bold tracking-wide">Sabor Selva</a>
+          <nav className="hidden md:flex gap-8 text-sm text-stone-700">
+            <a href="#about" className="hover:text-emerald-700">About Us</a>
+            <a href="#mission" className="hover:text-emerald-700">Our Mission</a>
+            <a href="#products" className="hover:text-emerald-700">Products</a>
           </nav>
         </div>
       </header>
 
-      {/* Hero */}
-      <section id="hero" className="relative">
-        <div className="absolute inset-0">
-          <Image src="/hero.jpg" alt="Bolivian rainforest canopy" fill className="object-cover opacity-40" priority />
-        </div>
-        <div className="relative mx-auto max-w-6xl px-5 py-28 sm:py-36">
-          <h1 className="text-4xl sm:text-6xl font-semibold leading-tight">
-            Chocolate & Coffee that Protect the Bolivian Rainforest
-          </h1>
-          <p className="mt-5 max-w-2xl text-neutral-300">
-            Premium, wild-grown flavors. Fair wages from farm to bar. Every bag and bar helps keep the forest standing.
+      {/* Brand Name */}
+      <section className="pt-12 pb-2 text-center">
+        <h1 className="text-5xl sm:text-7xl font-bold tracking-[0.25em]">
+          SABOR&nbsp;SELVA
+        </h1>
+      </section>
+
+      {/* Large Rainforest Image (placeholder for now) */}
+      <section className="mx-auto max-w-6xl px-6">
+        <PlaceholderTile
+          label="rainforest-hero.jpg"
+          aspect="aspect-[21/9]"
+          rounded="rounded-[2rem]"
+        />
+      </section>
+
+      {/* Slogan + Short Company Text */}
+      <section id="about" className="mx-auto max-w-3xl px-6 py-16">
+        <p className="uppercase text-xs tracking-[0.35em] text-emerald-700">Salva la Selva</p>
+        <div className="mt-4 rounded-[2rem] border border-stone-200 bg-white p-8 shadow-sm">
+          <p className="leading-relaxed text-lg">
+            Sabor Selva partners with Bolivian communities to source wild-grown cacao and coffee.
+            We pay fair wages and support forest-first harvesting that protects biodiversity and
+            combats deforestation—so every bar and bag keeps the rainforest standing.
           </p>
-          <div className="mt-8 flex gap-3">
-            <a href="#products" className="rounded-2xl px-6 py-3 bg-emerald-600 hover:bg-emerald-500 transition">
-              See Products
-            </a>
-            <a href="#contact" className="rounded-2xl px-6 py-3 border border-neutral-700 hover:border-neutral-500 transition">
-              Stay Updated
-            </a>
-          </div>
         </div>
       </section>
 
-      {/* Our Story */}
-      <section id="story" className="mx-auto max-w-6xl px-5 py-20">
-        <div className="grid gap-10 md:grid-cols-2 items-center">
-          <div>
-            <h2 className="text-2xl sm:text-3xl font-semibold">Our Story</h2>
-            <p className="mt-5 text-neutral-300">
-              Sabor Selva partners with Bolivian communities to source wild-grown cacao and coffee.
-              We pay fair wages and support forest-friendly harvesting that protects biodiversity and
-              combats deforestation. The result is extraordinary flavor with a measurable impact.
-            </p>
-          </div>
-          <div className="relative aspect-[4/3]">
-            <Image src="/story.jpg" alt="Harvest in the Bolivian rainforest" fill className="object-cover rounded-2xl" />
-          </div>
-        </div>
-      </section>
-
-      {/* Products */}
-      <section id="products" className="mx-auto max-w-6xl px-5 py-20">
-        <h2 className="text-2xl sm:text-3xl font-semibold">Products</h2>
-        <p className="mt-3 text-neutral-300">Showcase only for now—no webshop yet.</p>
-
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {/* Mission (three elegant points) */}
+      <section id="mission" className="mx-auto max-w-6xl px-6 pb-6">
+        <div className="grid gap-6 md:grid-cols-3">
           {[
-            { title: "Chocolate 70% – Wild Cacao", img: "/chocolate-70.jpg", notes: "Dark, floral, rainforest terroir." },
-            { title: "Chocolate 85% – Intense", img: "/chocolate-85.jpg", notes: "Bold cocoa, minimal sugar." },
-            { title: "Chocolate w/ Amazonian Nuts", img: "/chocolate-nuts.jpg", notes: "Crunchy, savory-sweet balance." },
-            { title: "Ground Coffee – Medium Roast", img: "/coffee-ground.jpg", notes: "Balanced, honeyed acidity." },
-            { title: "Whole Bean – Forest Blend", img: "/coffee-beans.jpg", notes: "Wild aromatics, clean finish." },
-          ].map((p) => (
-            <article key={p.title} className="rounded-2xl border border-neutral-800 overflow-hidden hover:border-neutral-600 transition">
-              <div className="relative aspect-square">
-                <Image src={p.img} alt={p.title} fill className="object-cover" />
-              </div>
-              <div className="p-5">
-                <h3 className="font-medium">{p.title}</h3>
-                <p className="mt-1 text-sm text-neutral-400">{p.notes}</p>
-              </div>
-            </article>
+            {
+              title: "Wild-Grown & Traceable",
+              text:
+                "Forest-first sourcing from native cacao and coffee—carefully harvested with the ecosystem in mind.",
+            },
+            {
+              title: "Fair, Transparent Wages",
+              text:
+                "Long-term relationships and price premiums that reward quality and conservation.",
+            },
+            {
+              title: "Impact You Can Taste",
+              text:
+                "Distinct terroir, clean roasting, and minimal processing for exceptional flavor and integrity.",
+            },
+          ].map((b) => (
+            <div key={b.title} className="rounded-[1.25rem] border border-stone-200 bg-white p-6">
+              <h3 className="text-lg font-bold">{b.title}</h3>
+              <p className="mt-2 text-stone-700 leading-relaxed">{b.text}</p>
+            </div>
           ))}
         </div>
       </section>
 
-      {/* Sustainability & Fair Wages */}
-      <section id="sustainability" className="mx-auto max-w-6xl px-5 py-20">
-        <h2 className="text-2xl sm:text-3xl font-semibold">Sustainability & Fair Wages</h2>
-        <div className="mt-6 grid gap-6 sm:grid-cols-2">
-          <div className="rounded-2xl border border-neutral-800 p-6">
-            <h3 className="font-medium">Forest-First Sourcing</h3>
-            <p className="mt-2 text-neutral-300">
-              We prioritize wild-grown cacao and coffee and pay premiums that reward conservation
-              and high quality—keeping trees standing and livelihoods strong.
-            </p>
+      {/* Product / Image Grid (placeholders for now) */}
+      <section id="products" className="mx-auto max-w-6xl px-6 py-16">
+        <div className="flex items-end justify-between">
+          <div>
+            <h2 className="text-2xl font-bold tracking-wide">Products & Gallery</h2>
+            <p className="mt-1 text-stone-700">Showcase only for now — shop coming later.</p>
           </div>
-          <div className="rounded-2xl border border-neutral-800 p-6">
-            <h3 className="font-medium">Fair, Transparent Pay</h3>
-            <p className="mt-2 text-neutral-300">
-              Long-term relationships and traceability. We’ll publish our price multipliers vs. commodity
-              rates as we grow, and co-invest in local processing where possible.
-            </p>
-          </div>
+        </div>
+
+        <div className="mt-8 grid grid-cols-2 md:grid-cols-3 gap-4">
+          {[
+            "prod-choc-70.jpg",
+            "prod-choc-85.jpg",
+            "prod-choc-nuts.jpg",
+            "prod-coffee-ground.jpg",
+            "prod-coffee-beans.jpg",
+            "lifestyle-forest.jpg",
+          ].map((name, idx) => (
+            <figure
+              key={name}
+              className={[
+                "relative overflow-hidden rounded-[1.25rem] ring-1 ring-stone-200",
+                idx === 0 ? "md:col-span-2" : "",
+              ].join(" ")}
+            >
+              <PlaceholderTile label={name} />
+              <figcaption className="absolute inset-x-0 bottom-0 text-center text-xs sm:text-sm text-stone-600 py-2">
+                {name.replace(".jpg", "").replace(/-/g, " ")}
+              </figcaption>
+            </figure>
+          ))}
         </div>
       </section>
 
-      {/* Stay Updated */}
-      <section id="contact" className="mx-auto max-w-2xl px-5 py-20">
-        <h2 className="text-2xl sm:text-3xl font-semibold">Stay Updated</h2>
-        <p className="mt-2 text-neutral-300">
-          Join our list and we’ll share launch updates and impact reports from the rainforest.
-        </p>
-
-        {/* Quick zero-backend option: Google Form embed */}
-        <div className="mt-6 rounded-2xl overflow-hidden border border-neutral-800">
-          <iframe
-            src="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true"
-            height="420"
-            className="w-full"
-          >
-            Loading…
-          </iframe>
-        </div>
-      </section>
-
-      <footer className="border-t border-neutral-800">
-        <div className="mx-auto max-w-6xl px-5 py-10 text-sm text-neutral-400">
-          © {new Date().getFullYear()} Sabor Selva. All rights reserved.
+      {/* Footer */}
+      <footer className="mt-24 border-t border-stone-200">
+        <div className="mx-auto max-w-6xl px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-stone-700">
+          <div>© {new Date().getFullYear()} Sabor Selva. All rights reserved.</div>
+          <nav className="flex gap-6">
+            <a href="#about" className="hover:text-emerald-700">About Us</a>
+            <a href="#mission" className="hover:text-emerald-700">Our Mission</a>
+            <a href="#products" className="hover:text-emerald-700">Products</a>
+          </nav>
         </div>
       </footer>
     </main>
