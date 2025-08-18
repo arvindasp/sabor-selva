@@ -2,7 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-:root { --radius: 12px; }
+/* Global look & feel */
+:root { --radius: 14px; }
 
-body { font-family: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans"; }
-h1, h2, h3 { font-family: var(--font-lora), ui-serif, Georgia, "Times New Roman", serif; }
+html, body {
+  height: 100%;
+}
+
+body {
+  /* Luxurious serif baseline */
+  font-family: "Times New Roman", Times, serif;
+  background-color: #faf8f3; /* warm off-white for a natural feel */
+  color: #1a1a1a;
+}
+
+/* Headings keep the same serif, just tune spacing */
+h1, h2, h3 {
+  letter-spacing: 0.02em;
+}
