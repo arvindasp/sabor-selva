@@ -15,14 +15,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Skip link for accessibility */}
         <a
           href="#content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:bg-white focus:text-black focus:px-3 focus:py-2 focus:rounded-md"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[70] focus:bg-white focus:text-black focus:px-3 focus:py-2 focus:rounded-md"
         >
           Skip to content
         </a>
 
-        {/* Sticky Header (glassy, thin border) */}
-        <header className="sticky top-0 z-50 glass border-b">
-          <div className="container flex items-center justify-between py-3">
+        {/* Sticky Header (glassy, taller, nav always visible) */}
+        <header className="sticky top-0 z-[60] border-b bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+          <div className="container flex items-center justify-between py-4">
             <a
               href="#"
               className="font-bold tracking-wide"
@@ -32,7 +32,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               Sabor Selva
             </a>
 
-            <nav className="hidden md:flex items-center gap-8 text-sm">
+            {/* Always visible; no mobile menu yet */}
+            <nav className="flex items-center gap-8 text-sm">
               <a href="#about" className="hover:text-emerald-700">About Us</a>
               <a href="#mission" className="hover:text-emerald-700">Our Mission</a>
               <a href="#products" className="hover:text-emerald-700">Products</a>
@@ -40,7 +41,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </div>
         </header>
 
-        {/* Main content */}
         <main id="content">{children}</main>
 
         {/* Simple Footer (repeat nav) */}

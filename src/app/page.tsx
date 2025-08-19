@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useEffect } from "react";
-// import Image from "next/image"; // Uncomment when you add real images
+import Image from "next/image";
 
-// Simple intersection observer to reveal elements on scroll
+// Reveal-on-scroll helper
 function useReveal(selector = "[data-reveal]") {
   useEffect(() => {
     const els = Array.from(document.querySelectorAll(selector));
@@ -23,99 +23,33 @@ function useReveal(selector = "[data-reveal]") {
   }, [selector]);
 }
 
-// A tasteful placeholder tile that looks good until images are added
-function Placeholder({
-  label,
-  className = "",
-  aspect = "aspect-[16/9]",
-  rounded = "rounded-xl-hero",
-}: {
-  label: string;
-  className?: string;
-  aspect?: string;
-  rounded?: string;
-}) {
-  return (
-    <div
-      className={[
-        "relative ring-line overflow-hidden",
-        "bg-gradient-to-br from-emerald-900 via-emerald-700 to-emerald-500/70",
-        aspect,
-        rounded,
-        className,
-      ].join(" ")}
-      aria-label={`${label} placeholder`}
-    >
-      <div className="absolute inset-0 opacity-30 mix-blend-multiply pointer-events-none" />
-      <div className="absolute inset-0 grid place-items-center">
-        <div className="px-4 py-2 text-center text-emerald-50/95 text-xs sm:text-sm bg-black/10 rounded-full">
-          <span className="opacity-90">Image placeholder</span>
-          <span className="opacity-70"> • </span>
-          <code className="opacity-90">/public/{label}</code>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export default function HomePage() {
   useReveal();
 
   return (
     <main>
-      {/* BRAND WORDMARK (Centered, spaced letters) */}
-      <section className="section pt-10 pb-4 text-center">
-        <h1
-          className="tracking-wide-hero"
-          style={{ fontWeight: 700 }}
-        >
-          SABOR&nbsp;SELVA
-        </h1>
-      </section>
-
-      {/* FULL-BLEED HERO (edge-to-edge rainforest look) */}
+      {/* FULL-BLEED HERO (no text overlay; slightly shorter height) */}
       <section className="w-full">
-        <div className="relative w-full">
-          {/* When you have the real image, replace this Placeholder with Next/Image:
-              
-              <div className="relative w-full min-h-[60vh] sm:min-h-[75vh]">
-                <Image src="/rainforest-hero.jpg" alt="Bolivian rainforest canopy" fill className="object-cover" priority />
-                <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-stone-50 to-transparent" />
-              </div>
-          */}
-          <div className="relative w-full min-h-[60vh] sm:min-h-[75vh]">
-            <Placeholder
-              label="rainforest-hero.jpg"
-              aspect="aspect-auto"
-              rounded=""
-              className="min-h-[60vh] sm:min-h-[75vh]"
-            />
-            {/* Smooth fade into the light page */}
-            <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-stone-50 to-transparent" />
-            {/* Wordmark overlay on hero (feels connected to nature) */}
-            <div className="absolute inset-0 grid place-items-center pointer-events-none">
-              <div className="text-center px-6">
-                <div
-                  className="text-white drop-shadow-[0_2px_18px_rgba(0,0,0,0.45)] tracking-[0.25em]"
-                  style={{ fontSize: "clamp(2rem, 6vw, 4rem)", fontWeight: 700 }}
-                >
-                  SABOR&nbsp;SELVA
-                </div>
-                <div className="mt-3 text-amber-200/90 text-sm tracking-[0.35em] uppercase">
-                  Salva la Selva
-                </div>
-              </div>
-            </div>
-          </div>
+        <div className="relative w-full min-h-[50vh] sm:min-h-[60vh]">
+          <Image
+            src="/rainforest-hero.jpg"
+            alt="Lush Bolivian rainforest canopy"
+            fill
+            className="object-cover"
+            priority
+          />
+          {/* Soft fade into the light page */}
+          <div className="absolute inset-x-0 bottom-0 h-32 sm:h-40 bg-gradient-to-t from-stone-50 to-transparent" />
         </div>
       </section>
 
-      {/* SLOGAN + INTRO CARD */}
-      <section id="about" className="container section">
+      {/* SLOGAN + INTRO (only one slogan; nice spacing) */}
+      <section id="about" className="container section pt-10">
         <div className="flex flex-col items-center text-center">
-          <span className="chip" data-reveal>
-            {/* emerald base + gold accent thread */}
-            <span className="w-2 h-2 rounded-full bg-emerald-700" />
+          <span
+            className="uppercase tracking-[0.35em] text-emerald-700 text-sm sm:text-base"
+            data-reveal
+          >
             Salva la Selva
           </span>
 
@@ -125,16 +59,17 @@ export default function HomePage() {
           >
             <div className="p-8 sm:p-10">
               <p className="text-balance">
-                Sabor Selva partners with Bolivian communities to source wild-grown cacao and coffee.
-                We pay fair wages and support forest-first harvesting that protects biodiversity and
-                combats deforestation—so every bar and bag keeps the rainforest standing.
+                Sabor Selva partners with Bolivian communities to source wild-grown cacao and
+                coffee. We pay fair wages and support forest-first harvesting that protects
+                biodiversity and combats deforestation—so every bar and bag keeps the rainforest
+                standing.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* THREE MISSION CARDS (with image placeholders and short copy) */}
+      {/* THREE MISSION CARDS (shallower aspect so images don’t feel stretched) */}
       <section id="mission" className="container section">
         <div className="grid gap-6 md:grid-cols-3">
           {[
@@ -163,29 +98,25 @@ export default function HomePage() {
               data-reveal
               style={{ transitionDelay: `${i * 80}ms` }}
             >
-              {/* Image area (placeholder for now) */}
-              <div className="relative">
-                <Placeholder label={card.img} aspect="aspect-[4/3]" rounded="" />
-                {/* If you add real images later:
-                    <div className="relative aspect-[4/3]">
-                      <Image src={`/${card.img}`} alt={card.title} fill className="object-cover" />
-                    </div>
-                */}
+              <div className="relative aspect-[3/2] overflow-hidden">
+                <Image
+                  src={`/${card.img}`}
+                  alt={card.title}
+                  fill
+                  className="object-cover"
+                />
               </div>
 
-              {/* Content */}
               <div className="card-content">
                 <h3 className="font-bold">{card.title}</h3>
-                <p className="mt-2 text-stone-700 leading-relaxed">
-                  {card.copy}
-                </p>
+                <p className="mt-2 text-stone-700 leading-relaxed">{card.copy}</p>
               </div>
             </article>
           ))}
         </div>
       </section>
 
-      {/* PRODUCTS / GALLERY – MINIMAL SCROLLER (scroll-snap, no JS) */}
+      {/* PRODUCTS / GALLERY – Minimal scroller (unchanged for now) */}
       <section id="products" className="section bg-white">
         <div className="container">
           <div className="flex items-end justify-between">
@@ -196,10 +127,7 @@ export default function HomePage() {
           </div>
 
           <div className="mt-6 -mx-6 overflow-x-auto scroll-smooth">
-            <div
-              className="px-6 flex gap-4 snap-x snap-mandatory"
-              aria-label="Product slider"
-            >
+            <div className="px-6 flex gap-4 snap-x snap-mandatory" aria-label="Product slider">
               {[
                 { file: "prod-choc-70.jpg", title: "70% Wild Cacao" },
                 { file: "prod-choc-85.jpg", title: "85% Intense" },
@@ -208,27 +136,15 @@ export default function HomePage() {
                 { file: "prod-coffee-beans.jpg", title: "Whole Bean Blend" },
                 { file: "lifestyle-forest.jpg", title: "Rainforest Origins" },
               ].map((item) => (
-                <figure
-                  key={item.file}
-                  className="snap-center shrink-0 w-[82vw] sm:w-[28rem] card overflow-hidden"
-                >
-                  <Placeholder
-                    label={item.file}
-                    aspect="aspect-[4/3]"
-                    rounded=""
-                    className="w-full"
-                  />
-                  {/* Real image version:
-                      <div className="relative aspect-[4/3] w-full">
-                        <Image src={`/${item.file}`} alt={item.title} fill className="object-cover" />
-                      </div>
-                  */}
+                <figure key={item.file} className="snap-center shrink-0 w-[82vw] sm:w-[28rem] card overflow-hidden">
+                  {/* still placeholders for these until you add files */}
+                  <div className="relative aspect-[4/3] w-full bg-gradient-to-br from-emerald-100 to-emerald-200/60 ring-line rounded-none" />
                   <figcaption className="card-content flex items-center justify-between">
                     <div>
                       <div className="font-semibold">{item.title}</div>
                       <div className="text-sm muted">Sabor Selva</div>
                     </div>
-                    {/* Subtle gold accent */}
+                    {/* Gold accent dot */}
                     <div className="w-2 h-2 rounded-full bg-amber-500/90" title="gold accent" />
                   </figcaption>
                 </figure>
