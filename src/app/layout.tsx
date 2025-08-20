@@ -20,26 +20,27 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Skip to content
         </a>
 
-        {/* Sticky Header (glassy, taller, nav always visible) */}
-        <header className="sticky top-0 z-[60] border-b bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60">
-          <div className="container flex items-center justify-between py-4">
+        {/* Fixed (sticky) Header — taller + always-visible nav */}
+        <header className="fixed top-0 left-0 right-0 z-[70] border-b bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+          <div className="container flex items-center justify-between py-8 sm:py-10">
             <a
               href="#"
-              className="font-bold tracking-wide"
+              className="font-bold tracking-wide text-lg"
               aria-label="Sabor Selva home"
               title="Sabor Selva"
             >
               Sabor Selva
             </a>
-
-            {/* Always visible; no mobile menu yet */}
-            <nav className="flex items-center gap-8 text-sm">
+            <nav className="flex items-center gap-10 text-sm">
               <a href="#about" className="hover:text-emerald-700">About Us</a>
               <a href="#mission" className="hover:text-emerald-700">Our Mission</a>
               <a href="#products" className="hover:text-emerald-700">Products</a>
             </nav>
           </div>
         </header>
+
+        {/* Spacer so content doesn't hide behind fixed header */}
+        <div aria-hidden className="h-[80px] sm:h-[97px]" />
 
         <main id="content">{children}</main>
 
