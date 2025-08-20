@@ -6,14 +6,14 @@ import Image from "next/image";
 /**
  * QUICK SIZE TWEAKS (edit these class strings):
  * - HERO_HEIGHT: overall hero height at each breakpoint
- * - MISSION_HEIGHT: image height in the 3 mission cards
+ * - MISSION_HEIGHT: image height in the 3 mission rows
  * - SLIDE_WIDTH: width of each product/gallery slide
  * - SLIDE_IMAGE_HEIGHT: image height inside each slide
  */
-const HERO_HEIGHT = "h-[320px] sm:h-[420px] md:h-[520px]";
-const MISSION_HEIGHT = "h-[180px] sm:h-[210px] md:h-[240px]";
-const SLIDE_WIDTH = "w-[82vw] sm:w-[24rem] md:w-[26rem]";
-const SLIDE_IMAGE_HEIGHT = "h-[200px] sm:h-[240px] md:h-[260px]";
+const HERO_HEIGHT = "h-[280px] sm:h-[360px] md:h-[460px]";
+const MISSION_HEIGHT = "h-[160px] sm:h-[190px] md:h-[220px]";
+const SLIDE_WIDTH = "w-[78vw] sm:w-[22rem] md:w-[24rem]";
+const SLIDE_IMAGE_HEIGHT = "h-[180px] sm:h-[220px] md:h-[240px]";
 
 // Reveal-on-scroll helper
 function useReveal(selector = "[data-reveal]") {
@@ -40,15 +40,15 @@ export default function HomePage() {
 
   return (
     <main>
-      {/* BRAND WORDMARK (between header and hero) */}
-      <section className="container pt-3 pb-1 text-center">
+      {/* BRAND WORDMARK (same size, tighter spacing) */}
+      <section className="container pt-1 pb-0 text-center">
         <h1 className="tracking-wide-hero" style={{ fontWeight: 700 }}>
           SABOR&nbsp;SELVA
         </h1>
       </section>
 
       {/* HERO — contained, fixed height, crisp */}
-      <section className="section pt-2">
+      <section className="section pt-1">
         <div className="container">
           <div
             className={[
@@ -62,7 +62,7 @@ export default function HomePage() {
               fill
               className="object-cover"
               priority
-              sizes="(min-width: 1250px) 1200px, 120vw"
+              sizes="(min-width: 1280px) 1152px, 90vw"
             />
           </div>
         </div>
@@ -94,9 +94,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* THREE MISSION CARDS — fixed image heights */}
+      {/* THREE MISSION ROWS — alternating layout, fixed image heights */}
       <section id="mission" className="container section scroll-mt-[110px]">
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="space-y-6">
           {[
             {
               title: "Wild-Grown & Traceable",
@@ -116,29 +116,49 @@ export default function HomePage() {
                 "Distinct terroir, clean roasting, and minimal processing for exceptional flavor and integrity.",
               img: "mission-3.jpg",
             },
-          ].map((card, i) => (
-            <article
-              key={card.title}
-              className="card overflow-hidden opacity-0 translate-y-3 transition-all duration-700"
-              data-reveal
-              style={{ transitionDelay: `${i * 80}ms` }}
-            >
-              <div className={["relative overflow-hidden", MISSION_HEIGHT].join(" ")}>
-                <Image
-                  src={`/${card.img}`}
-                  alt={card.title}
-                  fill
-                  className="object-cover"
-                  sizes="(min-width: 1000px) 400px, (min-width: 700px) 35vw, 10vw"
-                />
-              </div>
+          ].map((card, i) => {
+            const imageOnRight = i % 2 === 0; // 0 & 2: image right; 1: image left
+            return (
+              <article
+                key={card.title}
+                className="card opacity-0 translate-y-3 transition-all duration-700"
+                data-reveal
+                style={{ transitionDelay: `${i * 80}ms` }}
+              >
+                <div className="grid md:grid-cols-2 items-stretch">
+                  {/* Text column */}
+                  <div
+                    className={[
+                      "p-6 md:p-7 lg:p-8 flex items-center",
+                      imageOnRight ? "order-1" : "md:order-2",
+                    ].join(" ")}
+                  >
+                    <div>
+                      <h3 className="font-bold">{card.title}</h3>
+                      <p className="mt-2 text-stone-700 leading-relaxed">{card.copy}</p>
+                    </div>
+                  </div>
 
-              <div className="card-content">
-                <h3 className="font-bold">{card.title}</h3>
-                <p className="mt-2 text-stone-700 leading-relaxed">{card.copy}</p>
-              </div>
-            </article>
-          ))}
+                  {/* Image column */}
+                  <div
+                    className={[
+                      "relative overflow-hidden",
+                      MISSION_HEIGHT,
+                      imageOnRight ? "order-2" : "md:order-1",
+                    ].join(" ")}
+                  >
+                    <Image
+                      src={`/${card.img}`}
+                      alt={card.title}
+                      fill
+                      className="object-cover"
+                      sizes="(min-width: 768px) 50vw, 90vw"
+                    />
+                  </div>
+                </div>
+              </article>
+            );
+          })}
         </div>
       </section>
 
@@ -166,7 +186,7 @@ export default function HomePage() {
                   key={item.file}
                   className={["snap-center shrink-0 card overflow-hidden", SLIDE_WIDTH].join(" ")}
                 >
-                  {/* If you add actual files to /public with these names, replace the div below with a Next <Image/> */}
+                  {/* Placeholder until you add these files; replace this div with <Image/> when ready */}
                   <div
                     className={[
                       "relative w-full rounded-none ring-line bg-gradient-to-br from-emerald-100 to-emerald-200/60",
