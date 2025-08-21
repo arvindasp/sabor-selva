@@ -10,10 +10,10 @@ import Image from "next/image";
  * - SLIDE_WIDTH: width of each product/gallery slide
  * - SLIDE_IMAGE_HEIGHT: image height inside each slide
  */
-const HERO_HEIGHT = "h-[280px] sm:h-[360px] md:h-[460px]";
-const MISSION_HEIGHT = "h-[160px] sm:h-[190px] md:h-[220px]";
+const HERO_HEIGHT = "h-[340px] sm:h-[400px] md:h-[500px]";
+const MISSION_HEIGHT = "h-[200px] sm:h-[220px] md:h-[240px]";
 const SLIDE_WIDTH = "w-[78vw] sm:w-[22rem] md:w-[24rem]";
-const SLIDE_IMAGE_HEIGHT = "h-[180px] sm:h-[220px] md:h-[240px]";
+const SLIDE_IMAGE_HEIGHT = "h-[240px] sm:h-[250px] md:h-[270px]";
 
 // Reveal-on-scroll helper
 function useReveal(selector = "[data-reveal]") {
