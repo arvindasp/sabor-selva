@@ -23,8 +23,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         <Header />
 
-        {/* Spacer to match header height (adjust if you tweak header padding) */}
-        <div aria-hidden className="h-[92px] sm:h-[116px]" />
+        {/* Spacer so content doesn't sit under the fixed header */}
+        <div aria-hidden className="h-[136px] sm:h-[176px]" />
 
         <main id="content">{children}</main>
 
