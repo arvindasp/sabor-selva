@@ -94,7 +94,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* MISSION — three paired boxes (text left, image right) */}
+      {/* MISSION — three paired boxes: text LEFT, image RIGHT (same row) */}
 <section id="mission" className="container section scroll-mt-[110px]">
   <div className="space-y-10">
     {[
@@ -119,7 +119,7 @@ export default function HomePage() {
     ].map((card, i) => (
       <div
         key={card.title}
-        className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-6 items-center"
+        className="grid grid-cols-1 sm:grid-cols-[1fr_auto] items-stretch gap-6"
       >
         {/* TEXT CARD (left) */}
         <article
@@ -127,22 +127,22 @@ export default function HomePage() {
           data-reveal
           style={{ transitionDelay: `${i * 80}ms` }}
         >
-          {/* Match the image height so the pair feels aligned */}
-          <div className="card-content min-h-[300px] sm:min-h-[340px] md:min-h-[360px] flex items-center">
-            <div>
+          {/* Shorter padding so it fits beside the larger image */}
+          <div className="card-content p-5 md:p-6 min-h-[360px] sm:min-h-[420px] md:min-h-[460px] flex items-center">
+            <div className="max-w-[48ch]">
               <h3 className="font-bold">{card.title}</h3>
               <p className="mt-2 text-stone-700 leading-relaxed">{card.copy}</p>
             </div>
           </div>
         </article>
 
-        {/* IMAGE CARD (right) — narrower & a touch taller (near-square) */}
+        {/* IMAGE CARD (right) — bigger area, near-square */}
         <div
           className={[
             "card overflow-hidden opacity-0 translate-y-3 transition-all duration-700 justify-self-end",
-            // Width & height (tweak these if you want):
-            "w-[240px] sm:w-[280px] md:w-[320px] lg:w-[340px]",
-            "h-[300px] sm:h-[340px] md:h-[360px]",
+            // Wider & taller to look premium—adjust these if needed
+            "w-[320px] sm:w-[360px] md:w-[420px] lg:w-[460px]",
+            "h-[360px] sm:h-[420px] md:h-[460px]",
           ].join(" ")}
           data-reveal
           style={{ transitionDelay: `${i * 80 + 40}ms` }}
@@ -153,7 +153,7 @@ export default function HomePage() {
               alt={card.title}
               fill
               className="object-cover"
-              sizes="(min-width: 1024px) 340px, (min-width: 768px) 320px, 280px"
+              sizes="(min-width: 1280px) 460px, (min-width: 1024px) 420px, (min-width: 640px) 360px, 320px"
               priority={i === 0}
             />
           </div>
