@@ -94,9 +94,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* THREE MISSION ROWS — split cards (image left, text right on every row) */}
+      {/* MISSION — three paired boxes (text left, image right) */}
 <section id="mission" className="container section scroll-mt-[110px]">
-  <div className="space-y-8">
+  <div className="space-y-10">
     {[
       {
         title: "Wild-Grown & Traceable",
@@ -117,15 +117,35 @@ export default function HomePage() {
         img: "mission-3.jpg",
       },
     ].map((card, i) => (
-      <div key={card.title} className="grid md:grid-cols-2 gap-6 items-stretch">
-        {/* Image card (left) */}
-        <div
-          className={[
-            "card overflow-hidden opacity-0 translate-y-3 transition-all duration-700",
-            MISSION_HEIGHT,
-          ].join(" ")}
+      <div
+        key={card.title}
+        className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-6 items-center"
+      >
+        {/* TEXT CARD (left) */}
+        <article
+          className="card opacity-0 translate-y-3 transition-all duration-700"
           data-reveal
           style={{ transitionDelay: `${i * 80}ms` }}
+        >
+          {/* Match the image height so the pair feels aligned */}
+          <div className="card-content min-h-[300px] sm:min-h-[340px] md:min-h-[360px] flex items-center">
+            <div>
+              <h3 className="font-bold">{card.title}</h3>
+              <p className="mt-2 text-stone-700 leading-relaxed">{card.copy}</p>
+            </div>
+          </div>
+        </article>
+
+        {/* IMAGE CARD (right) — narrower & a touch taller (near-square) */}
+        <div
+          className={[
+            "card overflow-hidden opacity-0 translate-y-3 transition-all duration-700 justify-self-end",
+            // Width & height (tweak these if you want):
+            "w-[240px] sm:w-[280px] md:w-[320px] lg:w-[340px]",
+            "h-[300px] sm:h-[340px] md:h-[360px]",
+          ].join(" ")}
+          data-reveal
+          style={{ transitionDelay: `${i * 80 + 40}ms` }}
         >
           <div className="relative w-full h-full">
             <Image
@@ -133,25 +153,11 @@ export default function HomePage() {
               alt={card.title}
               fill
               className="object-cover"
-              sizes="(min-width: 768px) 50vw, 90vw"
+              sizes="(min-width: 1024px) 340px, (min-width: 768px) 320px, 280px"
+              priority={i === 0}
             />
           </div>
         </div>
-
-        {/* Text card (right) */}
-        <article
-          className="card opacity-0 translate-y-3 transition-all duration-700"
-          data-reveal
-          style={{ transitionDelay: `${i * 80 + 40}ms` }}
-        >
-          {/* Match the visual height to the image, and center the content */}
-          <div className={["card-content w-full flex items-center", MISSION_HEIGHT].join(" ")}>
-            <div>
-              <h3 className="font-bold">{card.title}</h3>
-              <p className="mt-2 text-stone-700 leading-relaxed">{card.copy}</p>
-            </div>
-          </div>
-        </article>
       </div>
     ))}
   </div>
