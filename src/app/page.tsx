@@ -94,73 +94,68 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* THREE MISSION ROWS — alternating layout, fixed image heights */}
-      <section id="mission" className="container section scroll-mt-[110px]">
-        <div className="space-y-6">
-          {[
-            {
-              title: "Wild-Grown & Traceable",
-              copy:
-                "Forest-first sourcing from native cacao and coffee—carefully harvested with the ecosystem in mind.",
-              img: "mission-1.jpg",
-            },
-            {
-              title: "Fair, Transparent Wages",
-              copy:
-                "Long-term relationships and price premiums that reward quality and conservation.",
-              img: "mission-2.jpg",
-            },
-            {
-              title: "Impact You Can Taste",
-              copy:
-                "Distinct terroir, clean roasting, and minimal processing for exceptional flavor and integrity.",
-              img: "mission-3.jpg",
-            },
-          ].map((card, i) => {
-            const imageOnRight = i % 2 === 0; // 0 & 2: image right; 1: image left
-            return (
-              <article
-                key={card.title}
-                className="card opacity-0 translate-y-3 transition-all duration-700"
-                data-reveal
-                style={{ transitionDelay: `${i * 80}ms` }}
-              >
-                <div className="grid md:grid-cols-2 items-stretch">
-                  {/* Text column */}
-                  <div
-                    className={[
-                      "p-6 md:p-7 lg:p-8 flex items-center",
-                      imageOnRight ? "order-1" : "md:order-2",
-                    ].join(" ")}
-                  >
-                    <div>
-                      <h3 className="font-bold">{card.title}</h3>
-                      <p className="mt-2 text-stone-700 leading-relaxed">{card.copy}</p>
-                    </div>
-                  </div>
-
-                  {/* Image column */}
-                  <div
-                    className={[
-                      "relative overflow-hidden",
-                      MISSION_HEIGHT,
-                      imageOnRight ? "order-2" : "md:order-1",
-                    ].join(" ")}
-                  >
-                    <Image
-                      src={`/${card.img}`}
-                      alt={card.title}
-                      fill
-                      className="object-cover"
-                      sizes="(min-width: 768px) 50vw, 90vw"
-                    />
-                  </div>
-                </div>
-              </article>
-            );
-          })}
+      {/* THREE MISSION ROWS — split cards (image left, text right on every row) */}
+<section id="mission" className="container section scroll-mt-[110px]">
+  <div className="space-y-8">
+    {[
+      {
+        title: "Wild-Grown & Traceable",
+        copy:
+          "Forest-first sourcing from native cacao and coffee—carefully harvested with the ecosystem in mind.",
+        img: "mission-1.jpg",
+      },
+      {
+        title: "Fair, Transparent Wages",
+        copy:
+          "Long-term relationships and price premiums that reward quality and conservation.",
+        img: "mission-2.jpg",
+      },
+      {
+        title: "Impact You Can Taste",
+        copy:
+          "Distinct terroir, clean roasting, and minimal processing for exceptional flavor and integrity.",
+        img: "mission-3.jpg",
+      },
+    ].map((card, i) => (
+      <div key={card.title} className="grid md:grid-cols-2 gap-6 items-stretch">
+        {/* Image card (left) */}
+        <div
+          className={[
+            "card overflow-hidden opacity-0 translate-y-3 transition-all duration-700",
+            MISSION_HEIGHT,
+          ].join(" ")}
+          data-reveal
+          style={{ transitionDelay: `${i * 80}ms` }}
+        >
+          <div className="relative w-full h-full">
+            <Image
+              src={`/${card.img}`}
+              alt={card.title}
+              fill
+              className="object-cover"
+              sizes="(min-width: 768px) 50vw, 90vw"
+            />
+          </div>
         </div>
-      </section>
+
+        {/* Text card (right) */}
+        <article
+          className="card opacity-0 translate-y-3 transition-all duration-700"
+          data-reveal
+          style={{ transitionDelay: `${i * 80 + 40}ms` }}
+        >
+          {/* Match the visual height to the image, and center the content */}
+          <div className={["card-content w-full flex items-center", MISSION_HEIGHT].join(" ")}>
+            <div>
+              <h3 className="font-bold">{card.title}</h3>
+              <p className="mt-2 text-stone-700 leading-relaxed">{card.copy}</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    ))}
+  </div>
+</section>
 
       {/* PRODUCTS / GALLERY – minimal scroller with fixed heights */}
       <section id="products" className="section bg-white scroll-mt-[110px]">
