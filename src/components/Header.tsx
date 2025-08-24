@@ -30,7 +30,7 @@ export default function Header() {
     <>
       {/* Full-bleed header */}
       <header className="fixed inset-x-0 top-0 z-[90] bg-[var(--bg)] border-b shadow-md">
-        <div className="w-full flex items-center justify-between px-6 sm:px-10 py-6 sm:py-8">
+      <div className="max-w-screen-2xl mx-auto w-full flex items-center justify-between px-6 sm:px-10 py-6 sm:py-8">
           {/* Logo / Brand */}
           <Link
             href="/"
