@@ -28,10 +28,8 @@ export default function Header() {
 
   return (
     <>
-      {/* Full-bleed header */}
       <header className="fixed inset-x-0 top-0 z-[90] bg-[var(--bg)] border-b shadow-md">
-      <div className="max-w-screen-2xl mx-auto w-full flex items-center justify-between px-6 sm:px-10 py-6 sm:py-8">
-          {/* Logo / Brand */}
+        <div className="flex justify-between items-center px-6 sm:px-10 py-6 sm:py-8 w-screen">
           <Link
             href="/"
             className="font-bold tracking-[0.15em] text-2xl sm:text-4xl"
@@ -40,7 +38,6 @@ export default function Header() {
             Sabor Selva
           </Link>
 
-          {/* Hamburger Icon */}
           <button
             type="button"
             onClick={() => setOpen(true)}
