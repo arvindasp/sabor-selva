@@ -47,7 +47,7 @@ export default function Header() {
             aria-label="Open menu"
             className="text-stone-900 hover:text-stone-700 transition p-2 sm:p-3"
           >
-            <Menu className="w-8 h-8 sm:w-10 sm:h-10" />
+            <Menu className="w-8 h-8 sm:w-10 sm:h-10 text-[#3B2F2F]" />
           </button>
         </div>
       </header>

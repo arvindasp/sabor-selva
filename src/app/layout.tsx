@@ -13,7 +13,8 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body>
+      <body className="bg-[var(--bg)] text-[var(--text)]">
+        {/* Accessibility: skip link */}
         <a
           href="#content"
           className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[95] focus:bg-white focus:text-black focus:px-3 focus:py-2 focus:rounded-md"
@@ -21,13 +22,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Skip to content
         </a>
 
+        {/* Full-bleed header outside container */}
         <Header />
 
-        {/* Spacer tuned to the bigger header height */}
-        <div aria-hidden className="h-[120px] sm:h-[152px]" />
+        {/* Page content inside container, with top padding to match header height */}
+        <main id="content" className="pt-[120px] sm:pt-[152px] container mx-auto px-5 sm:px-8 lg:px-12">
+          {children}
+        </main>
 
-        <main id="content">{children}</main>
-
+        {/* Footer inside same container */}
         <footer className="mt-24 border-t">
           <div className="container py-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
             <div>© {new Date().getFullYear()} Sabor Selva. All rights reserved.</div>
