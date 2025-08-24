@@ -94,7 +94,7 @@ export default function HomePage() {
         </div>
       </section>
 
-     {/* MISSION — three paired boxes: text LEFT, image RIGHT (always same row) */}
+     {/* MISSION — text LEFT (smaller), image RIGHT (bigger), always same row */}
 <section id="mission" className="container section scroll-mt-[110px]">
   <div className="space-y-10">
     {[
@@ -119,37 +119,37 @@ export default function HomePage() {
     ].map((card, i) => (
       <div
         key={card.title}
-        className="grid grid-cols-[1fr_auto] items-stretch gap-4 sm:gap-6"
+        className="grid grid-cols-[1fr_auto] items-center gap-4 sm:gap-8"
       >
-        {/* TEXT CARD (left) — HALF padding, height matches image */}
+        {/* TEXT CARD (left) — shorter + narrower */}
         <article
-          className="card opacity-0 translate-y-3 transition-all duration-700"
+          className="card min-w-0 opacity-0 translate-y-3 transition-all duration-700"
           data-reveal
           style={{ transitionDelay: `${i * 80}ms` }}
         >
           <div
             className={[
-              // HALF the padding vs before
-              "card-content p-3 sm:p-4 md:p-5",
-              // Match the image height exactly (near-square, responsive)
-              "min-h-[clamp(220px,38vw,420px)]",
+              // Half padding -> compact box
+              "p-3 sm:p-4",
+              // Shorter height than image so the image can be larger
+              "min-h-[clamp(160px,26vw,320px)]",
               "flex items-center",
             ].join(" ")}
           >
-            <div className="max-w-[46ch]">
+            <div className="max-w-[40ch]">
               <h3 className="font-bold">{card.title}</h3>
               <p className="mt-2 text-stone-700 leading-relaxed">{card.copy}</p>
             </div>
           </div>
         </article>
 
-        {/* IMAGE CARD (right) — bigger, near-square, responsive clamp */}
+        {/* IMAGE CARD (right) — bigger, near-square */}
         <div
           className={[
-            "card overflow-hidden opacity-0 translate-y-3 transition-all duration-700 justify-self-end",
-            // Width & height use clamp so it fits phones but feels premium on desktop
-            "w-[clamp(160px,38vw,420px)]",
-            "h-[clamp(220px,38vw,420px)]",
+            "card overflow-hidden justify-self-end opacity-0 translate-y-3 transition-all duration-700",
+            // Bigger area: near-square; grows more than the text card
+            "w-[clamp(220px,46vw,520px)]",
+            "h-[clamp(260px,46vw,520px)]",
           ].join(" ")}
           data-reveal
           style={{ transitionDelay: `${i * 80 + 40}ms` }}
@@ -160,7 +160,7 @@ export default function HomePage() {
               alt={card.title}
               fill
               className="object-cover"
-              sizes="(min-width:1280px) 420px, (min-width:1024px) 360px, (min-width:640px) 300px, 180px"
+              sizes="(min-width:1280px) 520px, (min-width:1024px) 460px, (min-width:640px) 380px, 240px"
               priority={i === 0}
             />
           </div>
@@ -169,6 +169,7 @@ export default function HomePage() {
     ))}
   </div>
 </section>
+
 
       {/* PRODUCTS / GALLERY – minimal scroller with fixed heights */}
       <section id="products" className="section bg-white scroll-mt-[110px]">
