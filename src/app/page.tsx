@@ -45,8 +45,8 @@ export default function HomePage() {
   <h1
     className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-wide-hero text-stone-900"
     style={{ fontWeight: 700 }}
-  >
-    SABOR&nbsp;SELVA
+  ><center>
+    SABOR&nbsp;SELVA</center>
   </h1>
 </section>
 

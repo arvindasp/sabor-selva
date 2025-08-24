@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { useEffect, useState } from "react";
+import { X } from "lucide-react";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -28,42 +28,45 @@ export default function Header() {
 
   return (
     <>
+      {/* Luxurious Header */}
       <header className="fixed inset-x-0 top-0 z-[90] bg-[var(--bg)] border-b shadow-md">
-        <div className="flex justify-between items-center px-6 sm:px-10 py-6 sm:py-8 w-screen">
-          <Link
-            href="/"
-            className="font-bold tracking-[0.15em] text-2xl sm:text-4xl"
-            aria-label="Sabor Selva home"
-          >
-            Sabor Selva
-          </Link>
+  <div className="w-full px-4 sm:px-6 lg:px-10">
+    <div className="max-w-screen-xl mx-auto flex justify-between items-center py-6 sm:py-8">
+      {/* Brand */}
+      <Link
+        href="/"
+        className="text-[#1c3b2a] font-bold tracking-[0.15em] text-2xl sm:text-4xl transition-all duration-200 hover:underline hover:underline-offset-[6px] active:scale-[1.01]"
+        aria-label="Sabor Selva Home"
+      >
+        Sabor Selva
+      </Link>
 
-          <button
-            type="button"
-            onClick={() => setOpen(true)}
-            aria-label="Open menu"
-            className="text-stone-900 hover:text-stone-700 transition p-2 sm:p-3"
-          >
-            <Menu className="w-8 h-8 sm:w-10 sm:h-10 text-[#3B2F2F]" />
-          </button>
-        </div>
-      </header>
+      {/* Hamburger */}
+      <button
+        type="button"
+        onClick={() => setOpen(true)}
+        aria-label="Open menu"
+        className="group p-3 sm:p-4 flex flex-col justify-between items-end space-y-1 transition-all"
+      >
+        <span className="w-7 h-[2px] bg-[#1c3b2a] rounded group-hover:scale-105 transition-transform" />
+        <span className="w-5 h-[2px] bg-[#1c3b2a] rounded group-hover:scale-105 transition-transform" />
+        <span className="w-6 h-[2px] bg-[#1c3b2a] rounded group-hover:scale-105 transition-transform" />
+      </button>
+    </div>
+  </div>
+</header>
 
-      {/* Right-side drawer menu */}
+      {/* Slide-in Menu (Right side) */}
       <aside
-        id="main-menu"
-        className={[
-          "fixed top-0 right-0 h-full z-[100] bg-[var(--surface)] border-l shadow-subtle origin-right",
-          "w-[80vw] sm:w-[360px] max-w-[420px]",
-          "transition-transform duration-300 ease-out",
-          open ? "translate-x-0 visible pointer-events-auto" : "translate-x-full invisible pointer-events-none",
-        ].join(" ")}
+        className={`fixed top-0 right-0 h-full w-[80vw] sm:w-[360px] max-w-[420px] z-[100] bg-[var(--surface)] border-l shadow-xl transition-transform duration-300 ease-in-out ${
+          open ? "translate-x-0 visible pointer-events-auto" : "translate-x-full invisible pointer-events-none"
+        }`}
       >
         <div className="flex items-center justify-between px-6 py-6 border-b">
-          <div className="font-bold tracking-[0.12em] text-lg">Menu</div>
+          <div className="font-bold tracking-[0.12em] text-lg text-stone-800">Menu</div>
           <button
             type="button"
-            className="text-stone-900 hover:text-stone-700 transition"
+            className="text-stone-900 hover:text-stone-600 transition"
             onClick={() => setOpen(false)}
             aria-label="Close menu"
           >
@@ -72,12 +75,12 @@ export default function Header() {
         </div>
 
         <nav className="px-6 py-6">
-          <ul className="list-none space-y-4">
+          <ul className="space-y-4">
             {nav.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="block px-3 py-4 rounded-lg hover:bg-stone-100 text-xl sm:text-2xl tracking-[0.06em]"
+                  className="block px-3 py-3 rounded-md text-xl sm:text-2xl text-stone-800 hover:bg-stone-100 transition"
                   onClick={() => setOpen(false)}
                 >
                   {item.label}

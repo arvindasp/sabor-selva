@@ -43,20 +43,17 @@ export default function AboutPage() {
       <section className="container section pt-8">
         <div className="grid gap-8 md:grid-cols-2 items-center">
           <div>
-            <h1>About Sabor Selva</h1>
-            <p className="mt-3 text-stone-700 text-balance">
+            <h1><center>About Us</center></h1>
+            <p className="mt-3 text-stone-700 text-balance"><center>
               Chocolate &amp; coffee born in the Bolivian rainforest, crafted with dignity.
-            </p>
+              </center></p>
           </div>
 
           {/* Replace the Placeholder with the Image block once you add /about-hero.jpg */}
           <div className="w-full">
-            {/* Real image version:
-            <div className="relative w-full h-[320px] sm:h-[420px] rounded-xl-hero ring-line overflow-hidden shadow-soft">
-              <Image src="/about-hero.jpg" alt="Harvest in the Bolivian rainforest" fill className="object-cover" priority />
+            <div className="relative w-full h-[400px] sm:h-[400px] rounded-xl-hero ring-line overflow-hidden shadow-soft">
+              <Image src="/mission-1.jpg" alt="Harvest in the Bolivian rainforest" fill className="object-cover" priority />
             </div>
-            */}
-            <Placeholder label="about-hero.jpg" />
           </div>
         </div>
       </section>

@@ -31,6 +31,11 @@
   --shadow-subtle: 0 4px 14px rgba(0,0,0,0.05);
 }
 
+:root {
+  --bg: #fdfaf4;
+  --surface: #ffffff;
+}
+
 /* Optional dark mode hook (not active by default) */
 :root[data-theme="dark"] {
   --bg:      #0b0b0b;
