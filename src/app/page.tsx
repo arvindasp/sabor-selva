@@ -39,7 +39,7 @@ export default function HomePage() {
   useReveal();
 
   return (
-    <main>
+    <main className="pt-[96px] sm:pt-[112px]">
       {/* BRAND WORDMARK (same size, tighter spacing) */}
       <section className="container pt-1 pb-0 text-center">
         <h1 className="tracking-wide-hero" style={{ fontWeight: 700 }}>
