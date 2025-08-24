@@ -41,11 +41,14 @@ export default function HomePage() {
   return (
     <main className="pt-[96px] sm:pt-[112px]">
       {/* BRAND WORDMARK (same size, tighter spacing) */}
-      <section className="container pt-1 pb-0 text-center">
-        <h1 className="tracking-wide-hero" style={{ fontWeight: 700 }}>
-          SABOR&nbsp;SELVA
-        </h1>
-      </section>
+      <section className="pt-1 pb-0 text-center">
+  <h1
+    className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-wide-hero"
+    style={{ fontWeight: 700 }}
+  >
+    SABOR&nbsp;SELVA
+  </h1>
+</section>
 
       {/* HERO — contained, fixed height, crisp */}
       <section className="section pt-1">
