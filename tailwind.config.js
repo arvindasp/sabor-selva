@@ -9,3 +9,4 @@ module.exports = {
     plugins: [],
   };
   
+  <nav className="hidden md:flex gap-8 text-[var(--accent)] text-[1rem]"></nav>

@@ -26,9 +26,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
 
         {/* Page content inside container, with top padding to match header height */}
-        <main id="content" className="pt-[120px] sm:pt-[152px] container mx-auto px-5 sm:px-8 lg:px-12">
-          {children}
-        </main>
+        <main
+  id="content"
+  className="pt-[120px] sm:pt-[160px] max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12"
+>
+  {children}
+</main>
 
         {/* Footer inside same container */}
         <footer className="mt-24 border-t">
