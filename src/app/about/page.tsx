@@ -50,8 +50,8 @@ export default function AboutPage() {
           </div>
 
           {/* Replace the Placeholder with the Image block once you add /about-hero.jpg */}
-          <div className="w-full">
-            <div className="relative w-full h-[400px] sm:h-[400px] rounded-xl-hero ring-line overflow-hidden shadow-soft">
+          <div className="w-full overflow-hidden rounded-xl-hero ring-line shadow-soft">
+            <div className="relative w-full h-[260px] sm:h-[340px] md:h-[420px]">
               <Image src="/mission-1.jpg" alt="Harvest in the Bolivian rainforest" fill className="object-cover" priority />
             </div>
           </div>

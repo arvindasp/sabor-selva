@@ -11,10 +11,10 @@ export const metadata: Metadata = {
 /* ---------- QUICK SIZE TWEAKS ----------
    Edit these class strings to resize blocks later.
 ----------------------------------------- */
-const HERO_HEIGHT = "h-[260px] sm:h-[340px] md:h-[420px]";
+const HERO_HEIGHT = "h-[340px] sm:h-[400px] md:h-[500px]";
 const KPI_HEIGHT = "h-[92px]";
-const METHOD_IMAGE_HEIGHT = "h-[160px] sm:h-[180px]";
-const CONSERVE_IMAGE_HEIGHT = "h-[200px] sm:h-[240px] md:h-[280px]";
+const METHOD_IMAGE_HEIGHT = "h-[200px] sm:h-[220px] md:h-[240px]";
+const CONSERVE_IMAGE_HEIGHT = "h-[240px] sm:h-[250px] md:h-[270px]";
 
 /** Elegant placeholder so the page looks polished before images are added. */
 function Placeholder({
@@ -31,14 +31,14 @@ function Placeholder({
   return (
     <div
       className={[
-        "relative ring-line overflow-hidden shadow-soft bg-gradient-to-br from-emerald-100 to-emerald-200/60 grid place-items-center",
+        "relative ring-line overflow-hidden shadow-soft bg-[var(--cream)] text-stone-700 grid place-items-center",
         rounded,
         height,
         className,
       ].join(" ")}
       aria-label={`${label} placeholder`}
     >
-      <div className="text-stone-700 text-xs sm:text-sm text-center px-4">
+           <div className="text-xs sm:text-sm text-center px-4">
         <strong>Image placeholder</strong>
         <br />
         Add <code>/{label}</code> to <code>/public</code>
@@ -55,7 +55,7 @@ export default function MissionPage() {
         <div className="relative w-full ring-line rounded-xl-hero overflow-hidden shadow-soft">
           {/* Swap Placeholder for real image when you add /mission-hero.jpg */}
           {/* Real image:
-          <div className={["relative w-full", HERO_HEIGHT].join(" ")}>
+                    <div className={["relative w-full", HERO_HEIGHT, "max-h-screen"].join(" ")}>
             <Image src="/mission-hero.jpg" alt="Forest-first harvesting in Bolivia" fill className="object-cover" priority />
           </div>
           */}
@@ -129,7 +129,7 @@ export default function MissionPage() {
               {/* Replace with real images if you have them */}
               <Placeholder label={step.img} height={METHOD_IMAGE_HEIGHT} rounded="" />
               {/* Real image block:
-              <div className={["relative w-full", METHOD_IMAGE_HEIGHT].join(" ")}>
+                     <div className={["relative w-full", METHOD_IMAGE_HEIGHT, "max-h-screen"].join(" ")}>
                 <Image src={`/${step.img}`} alt={step.title} fill className="object-cover" />
               </div>
               */}
@@ -229,10 +229,10 @@ export default function MissionPage() {
             <Placeholder label="conservation-1.jpg" height={CONSERVE_IMAGE_HEIGHT} />
             <Placeholder label="conservation-2.jpg" height={CONSERVE_IMAGE_HEIGHT} />
             {/* Or real images:
-            <div className={["relative w-full", CONSERVE_IMAGE_HEIGHT].join(" ")}>
+            <div className={["relative w-full", CONSERVE_IMAGE_HEIGHT, "max-h-screen"].join(" ")}>
               <Image src="/conservation-1.jpg" alt="Forest landscape" fill className="object-cover rounded-xl-hero ring-line shadow-soft" />
             </div>
-            <div className={["relative w-full", CONSERVE_IMAGE_HEIGHT].join(" ")}>
+             <div className={["relative w-full", CONSERVE_IMAGE_HEIGHT, "max-h-screen"].join(" ")}>
               <Image src="/conservation-2.jpg" alt="Biodiversity detail" fill className="object-cover rounded-xl-hero ring-line shadow-soft" />
             </div>
             */}
