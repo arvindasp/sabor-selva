@@ -6,7 +6,7 @@
    ========================================================================== */
 :root {
   /* Color tokens – warm, natural palette */
-  --bg:            #faf8f3; /* warm off-white */
+  --bg:            #FFFAED; /* site background (cream) */
   --surface:       #ffffff;
   --text:          #1a1a1a;
   --muted:         #6b7280; /* stone-500-ish */
