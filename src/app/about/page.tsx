@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 function Placeholder({
   label,
   className = "",
-  height = "h-[320px] sm:h-[420px]",
+  height = "h-[320px] sm:h-[420px] md:h-[520px]",
 }: {
   label: string;
   className?: string;
@@ -42,16 +42,16 @@ export default function AboutPage() {
       {/* Hero — Split: text left, image right */}
       <section className="container section pt-8">
         <div className="grid gap-8 md:grid-cols-2 items-center">
-          <div>
-            <h1><center>About Us</center></h1>
-            <p className="mt-3 text-stone-700 text-balance"><center>
+        <div className="text-center">
+            <h1 className="tracking-wide-hero">About Us</h1>
+            <p className="mt-3 text-stone-700 text-balance">
               Chocolate &amp; coffee born in the Bolivian rainforest, crafted with dignity.
-              </center></p>
+            </p>
           </div>
 
           {/* Replace the Placeholder with the Image block once you add /about-hero.jpg */}
           <div className="w-full overflow-hidden rounded-xl-hero ring-line shadow-soft">
-            <div className="relative w-full h-[260px] sm:h-[340px] md:h-[420px]">
+          <div className="relative w-full h-[320px] sm:h-[420px] md:h-[520px]">
               <Image src="/mission-1.jpg" alt="Harvest in the Bolivian rainforest" fill className="object-cover" priority />
             </div>
           </div>

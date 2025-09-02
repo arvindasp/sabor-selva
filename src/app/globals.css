@@ -1,7 +1,209 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+/* ==========================================================================
+   Global Design Tokens (easy theme tweaks)
+   ========================================================================== */
+:root {
+  /* Color tokens – warm, natural palette */
+  --bg:            #faf8f3; /* warm off-white */
+  --surface:       #ffffff;
+  --text:          #1a1a1a;
+  --muted:         #6b7280; /* stone-500-ish */
+  --line:          #e7e5e4; /* stone-200-ish */
+  --accent:        #047857; /* emerald-700 */
+  --accent-weak:   #a7f3d0; /* emerald-200 */
+  --accent-soft:   #d1fae5; /* emerald-100 */
+  --gold:          #d4af37; /* gold accent */
+  --radius:        14px;     /* global rounded radius */
+}
+/* Optional dark mode hook (not active by default) */
+:root[data-theme="dark"] {
+  --bg:      #0b0b0b;
+  --surface: #131313;
+  --text:    #e7e7e7;
+  --muted:   #9ca3af;
+  --line:    #2a2a2a;
+  --accent:  #34d399; /* emerald-400 on dark */
+  --accent-weak: #064e3b;
+  --accent-soft: #022c22;
+  --gold:   #b8860b;
+}
+/* ==========================================================================
+   Base Resets & Defaults
+   ========================================================================== */
+html, body {
+  height: 100%;
+}
+html {
+  scroll-behavior: smooth;
+  text-size-adjust: 100%;
+}
 body {
-  @apply bg-[#fdf6e3] text-stone-900 antialiased;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Times New Roman", Times, serif; /* Luxurious serif baseline */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/* Unify default border color with our design token */
+*,
+*::before,
+*::after {
+  border-color: var(--line);
+}
+/* Text selection */
+::selection {
+  background: var(--accent-weak);
+  color: var(--text);
+}
+/* Headings – same serif, tuned spacing */
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+}
+/* Fine-tuned default sizes (Tailwind can still override) */
+h1 { font-size: clamp(2.5rem, 5vw, 4.25rem); font-weight: 700; }
+h2 { font-size: clamp(1.5rem, 3vw, 2rem);    font-weight: 700; }
+h3 { font-size: clamp(1.125rem, 2.3vw, 1.25rem); font-weight: 700; }
+/* Paragraph rhythm */
+p { line-height: 1.75; }
+/* Links */
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color .2s ease, opacity .2s ease;
+}
+a:hover { color: var(--accent); }
+/* Focus style – subtle but visible */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+/* Media elements */
+img, svg, video, canvas { display: block; max-width: 100%; }
+/* Smooth scroll for anchor links */
+html:focus-within { scroll-behavior: smooth; }
+/* Clean scrollbars (WebKit) – optional, subtle) */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: #d6d3d1; border-radius: 999px; }
+::-webkit-scrollbar-track { background: transparent; }
+/* ==========================================================================
+   Components (reusable building blocks)
+   ========================================================================== */
+@layer components {
+  /* Container utility for page content */
+  .container {
+    max-width: 72rem; /* ~ 1152px (similar to max-w-6xl) */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;  /* px-6 */
+    padding-right: 1.5rem;
+  }
+  /* Sections with consistent vertical spacing */
+  .section {
+    padding-top: 4rem;    /* py-16 */
+    padding-bottom: 4rem;
+  }
+  .section-lg {
+    padding-top: 6rem;    /* py-24 */
+    padding-bottom: 6rem;
+  }
+  /* Card */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: 0 1px 1px rgba(0,0,0,0.03), 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .card-soft {
+    background: linear-gradient(to bottom right, #ffffff, #fafafa);
+    border: 1px solid var(--line);
+    border-radius: calc(var(--radius) + 2px);
+    box-shadow: 0 1px 1px rgba(0,0,0,0.02), 0 10px 30px rgba(0,0,0,0.06);
+  }
+  .card-content { padding: 1.25rem; /* p-5 */ }
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    padding: .75rem 1.25rem;
+    border-radius: calc(var(--radius) - 6px);
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--text);
+    font-weight: 600;
+    transition: transform .06s ease, background-color .2s ease, border-color .2s ease, color .2s ease, box-shadow .2s ease;
+  }
+  .btn:hover { border-color: #c6c6c6; }
+  .btn:active { transform: translateY(1px); }
+  .btn-primary {
+    background: var(--accent);
+    color: white;
+    border-color: transparent;
+  }
+  .btn-primary:hover { filter: saturate(1.05); }
+  .btn-gold {
+    background: var(--gold);
+    color: white;
+    border-color: transparent;
+  }
+  .btn-gold:hover { filter: saturate(1.05); }
+  .btn-outline { background: transparent; color: var(--text); }
+  /* Chip / Badge */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: .375rem;
+    padding: .375rem .625rem;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    font-size: .75rem;
+    line-height: 1rem;
+    color: var(--muted);
+  }
+  /* Sticky header backdrop helper */
+  .glass {
+    background-color: rgba(255, 255, 255, 0.7);
+    -webkit-backdrop-filter: saturate(180%) blur(10px);
+            backdrop-filter: saturate(180%) blur(10px);
+  }
+  /* Hero image wrapper mask (soft corners + ring) */
+  .hero-frame {
+    border-radius: calc(var(--radius) + 18px);
+    overflow: hidden;
+    border: 1px solid var(--line);
+  }
+  /* Simple prose styling for long text blocks (no @apply) */
+  .prose-basic {
+    line-height: 1.75;           /* ~ leading-relaxed */
+    font-size: 1.125rem;         /* ~ text-lg */
+    color: #1f2937;              /* slate/stone 800-ish */
+  }
+  .prose-basic p + p { margin-top: 1rem; }
+}
+/* ==========================================================================
+   Utilities (small handy helpers)
+   ========================================================================== */
+@layer utilities {
+  .tracking-wide-hero { letter-spacing: 0.25em; }
+  .ring-line { box-shadow: inset 0 0 0 1px var(--line); }
+  .shadow-soft { box-shadow: 0 10px 30px rgba(0,0,0,0.06); }
+  .shadow-subtle { box-shadow: 0 4px 14px rgba(0,0,0,0.05); }
+  .rounded-xl-hero { border-radius: calc(var(--radius) + 18px); }
+  .text-balance { text-wrap: balance; }
+  .muted { color: var(--muted); }
+}
+/* ==========================================================================
+   Print tweaks (so one-page looks nice if printed)
+   ========================================================================== */
+@media print {
+  .no-print { display: none !important; }
+  a { text-decoration: underline; }
+  body { background: white; }
+  .card, .card-soft { box-shadow: none; }
 }
