@@ -60,7 +60,7 @@ export default function HomePage() {
       <section className="section">
         <FadeIn>
           <h2 className={`${merriweather.className} text-center text-3xl md:text-4xl text-balance`}>
-            "Salva La Selva"
+            &ldquo;Salva La Selva&rdquo;
           </h2>
         </FadeIn>
       </section>
