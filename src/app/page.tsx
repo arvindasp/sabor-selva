@@ -48,7 +48,7 @@ export default function HomePage() {
           interval={5500}
           quality={90}
         />
-        <div className="absolute inset-0 bg-black/30" />
+        <div className="absolute inset-0 z-10 bg-black/30" />
         <FadeIn className="relative z-10 px-4">
           <h1 className={`${playfair.className} tracking-wide-hero !text-white drop-shadow-md text-5xl md:text-7xl`}>
             SABOR SELVA
@@ -162,7 +162,7 @@ function Slideshow({
   }, [images, interval]);
 
   return (
-    <div className="absolute inset-0">
+    <div className="absolute inset-0 z-0">
       {images.map((src, i) => (
         <div key={src} className={`absolute inset-0 transition-opacity duration-1000 ${i === index ? "opacity-100" : "opacity-0"}`}>
           <div className="relative w-full h-full">
