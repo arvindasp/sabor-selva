@@ -42,15 +42,19 @@ export default function HomePage() {
   return (
     <div className="w-full">
       {/* Full-bleed hero slideshow */}
-      <section className="relative left-1/2 -translate-x-1/2 w-screen h-[70vh] min-h-[460px] flex items-center justify-center text-center overflow-hidden">
+      <section
+        className="relative left-1/2 -translate-x-1/2 w-screen h-[70vh] min-h-[460px] flex items-center justify-center text-center overflow-hidden"
+      >
         <Slideshow
           images={["/rainforest-hero.jpg", "/rainforest-3.jpg", "/rainforest-4.jpg"]}
           interval={5500}
           quality={90}
         />
-        <div className="absolute inset-0 z-10 bg-black/30" />
-        <FadeIn className="relative z-10 px-4">
-          <h1 className={`${playfair.className} tracking-wide-hero !text-white drop-shadow-md text-5xl md:text-7xl`}>
+        <div className="absolute inset-0 z-30 bg-black/30" />
+        <FadeIn className="relative z-40 px-4">
+          <h1
+            className={`${playfair.className} tracking-wide-hero text-white drop-shadow-[0_2px_18px_rgba(0,0,0,0.45)] text-4xl md:text-6xl`}
+          >
             SABOR SELVA
           </h1>
         </FadeIn>
@@ -162,9 +166,12 @@ function Slideshow({
   }, [images, interval]);
 
   return (
-    <div className="absolute inset-0 z-0">
+    <div className="absolute inset-0 z-20 pointer-events-none">
       {images.map((src, i) => (
-        <div key={src} className={`absolute inset-0 transition-opacity duration-1000 ${i === index ? "opacity-100" : "opacity-0"}`}>
+        <div
+          key={src}
+          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${i === index ? "opacity-100 z-20" : "opacity-0 z-10"}`}
+        >
           <div className="relative w-full h-full">
             <Image
               src={src}
@@ -174,6 +181,7 @@ function Slideshow({
               quality={quality}
               sizes="100vw"
               className="object-cover"
+              unoptimized
             />
           </div>
         </div>
