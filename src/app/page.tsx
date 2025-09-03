@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Playfair_Display, Merriweather } from "next/font/google";
 
 const playfair = Playfair_Display({ subsets: ["latin"] });
@@ -39,21 +39,23 @@ function FadeIn({ children, className = "", delay = 0 }: { children: React.React
 }
 
 export default function HomePage() {
+  const heroImages = useMemo(() => ["/rainforest-hero.jpg", "/rainforest-3.jpg", "/rainforest-4.jpg"], []);
   return (
     <div className="w-full">
       {/* Full-bleed hero slideshow */}
       <section
-        className="relative left-1/2 -translate-x-1/2 w-screen h-[70vh] min-h-[460px] flex items-center justify-center text-center overflow-hidden"
+        className="relative left-1/2 -translate-x-1/2 w-screen h-[70vh] min-h-[460px] flex items-center justify-center text-center overflow-hidden bg-cover bg-center"
+        style={{ backgroundImage: 'url(/rainforest-hero.jpg)' }}
       >
         <Slideshow
-          images={["/rainforest-hero.jpg", "/rainforest-3.jpg", "/rainforest-4.jpg"]}
+          images={heroImages}
           interval={5500}
           quality={90}
         />
-        <div className="absolute inset-0 z-30 bg-black/30" />
-        <FadeIn className="relative z-40 px-4">
+        <div className="absolute inset-0 z-20 bg-black/30" />
+        <FadeIn className="relative z-30 px-4">
           <h1
-            className={`${playfair.className} tracking-wide-hero text-white drop-shadow-[0_2px_18px_rgba(0,0,0,0.45)] text-4xl md:text-6xl`}
+            className={`${playfair.className} tracking-wide-hero !text-white drop-shadow-[0_2px_18px_rgba(0,0,0,0.45)] text-4xl md:text-6xl`}
           >
             SABOR SELVA
           </h1>
@@ -163,10 +165,10 @@ function Slideshow({
     if (!images?.length) return;
     const id = setInterval(() => setIndex((i) => (i + 1) % images.length), interval);
     return () => clearInterval(id);
-  }, [images, interval]);
+  }, [images.length, interval]);
 
   return (
-    <div className="absolute inset-0 z-20 pointer-events-none">
+    <div className="absolute inset-0 z-10">
       {images.map((src, i) => (
         <div
           key={src}
