@@ -55,7 +55,8 @@ export default function HomePage() {
         <div className="absolute inset-0 z-20 bg-black/30" />
         <FadeIn className="relative z-30 px-4">
           <h1
-            className={`${playfair.className} tracking-wide-hero !text-white drop-shadow-[0_2px_18px_rgba(0,0,0,0.45)] text-4xl md:text-6xl`}
+            className={`${playfair.className} tracking-wide-hero drop-shadow-[0_2px_18px_rgba(0,0,0,0.45)] text-4xl md:text-6xl`}
+            style={{ color: "#fff" }}
           >
             SABOR SELVA
           </h1>
@@ -160,19 +161,14 @@ function Slideshow({
   interval?: number;
   quality?: number;
 }) {
-  const [index, setIndex] = useState(0);
-  useEffect(() => {
-    if (!images?.length) return;
-    const id = setInterval(() => setIndex((i) => (i + 1) % images.length), interval);
-    return () => clearInterval(id);
-  }, [images.length, interval]);
-
+  const duration = images.length * interval;
   return (
     <div className="absolute inset-0 z-10">
       {images.map((src, i) => (
         <div
           key={src}
-          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${i === index ? "opacity-100 z-20" : "opacity-0 z-10"}`}
+          className="absolute inset-0 ss-slide"
+          style={{ animationDelay: `${i * interval}ms`, animationDuration: `${duration}ms` }}
         >
           <div className="relative w-full h-full">
             <Image
