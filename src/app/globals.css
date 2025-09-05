@@ -200,13 +200,18 @@ html:focus-within { scroll-behavior: smooth; }
 }
 /* Simple CSS-driven crossfade for the hero slideshow */
 @keyframes ss-fade {
-  0% { opacity: 0; }
-  8% { opacity: 1; }
+  0% { opacity: 1; }
   33% { opacity: 1; }
   41% { opacity: 0; }
   100% { opacity: 0; }
 }
-.ss-slide { opacity: 0; animation-name: ss-fade; animation-timing-function: ease-in-out; animation-iteration-count: infinite; }
+.ss-slide {
+  opacity: 0;
+  animation-name: ss-fade;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both; /* honor 0% and 100% states */
+}
 /* ==========================================================================
    Print tweaks (so one-page looks nice if printed)
    ========================================================================== */

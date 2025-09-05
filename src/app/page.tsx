@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Playfair_Display, Merriweather } from "next/font/google";
 
 const playfair = Playfair_Display({ subsets: ["latin"] });
@@ -39,7 +39,6 @@ function FadeIn({ children, className = "", delay = 0 }: { children: React.React
 }
 
 export default function HomePage() {
-  const heroImages = useMemo(() => ["/rainforest-hero.jpg", "/rainforest-3.jpg", "/rainforest-4.jpg"], []);
   return (
     <div className="w-full">
       {/* Full-bleed hero slideshow */}
@@ -47,16 +46,12 @@ export default function HomePage() {
         className="relative left-1/2 -translate-x-1/2 w-screen h-[70vh] min-h-[460px] flex items-center justify-center text-center overflow-hidden bg-cover bg-center"
         style={{ backgroundImage: 'url(/rainforest-hero.jpg)' }}
       >
-        <Slideshow
-          images={heroImages}
-          interval={5500}
-          quality={90}
-        />
+        {/* Static hero only; slideshow moved below */}
         <div className="absolute inset-0 z-20 bg-black/30" />
         <FadeIn className="relative z-30 px-4">
           <h1
             className={`${playfair.className} tracking-wide-hero drop-shadow-[0_2px_18px_rgba(0,0,0,0.45)] text-4xl md:text-6xl`}
-            style={{ color: "#fff" }}
+            style={{ color: "#ffffff" }}
           >
             SABOR SELVA
           </h1>
@@ -64,7 +59,7 @@ export default function HomePage() {
       </section>
 
       {/* Slogan */}
-      <section className="section">
+      <section className="section pt-8 pb-8">
         <FadeIn>
           <h2 className={`${merriweather.className} text-center text-3xl md:text-4xl text-balance`}>
             &ldquo;Salva La Selva&rdquo;
@@ -134,6 +129,19 @@ export default function HomePage() {
               </div>
             </div>
           </FadeIn>
+        </div>
+      </section>
+
+      {/* Full-bleed slideshow (below the 3 blocks) */}
+      <section className="section py-0">
+        <div
+          className="relative left-1/2 -translate-x-1/2 w-screen overflow-hidden ring-2 ring-emerald-400/40"
+          style={{ height: "55vh", minHeight: 360 }}
+        >
+          <div className="absolute inset-0 z-0">
+            <Image src="/rainforest-3.jpg" alt="Slideshow fallback" fill className="object-cover" unoptimized />
+          </div>
+          <Slideshow images={["/rainforest-3.jpg", "/rainforest-4.jpg"]} interval={6000} quality={90} />
         </div>
       </section>
 
