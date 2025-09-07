@@ -135,13 +135,16 @@ export default function HomePage() {
       {/* Full-bleed slideshow (below the 3 blocks) */}
       <section className="section py-0">
         <div
-          className="relative left-1/2 -translate-x-1/2 w-screen overflow-hidden ring-2 ring-emerald-400/40"
-          style={{ height: "55vh", minHeight: 360 }}
+          className="relative w-full overflow-hidden"
+          style={{
+            height: "65vh",
+            minHeight: 420,
+            backgroundImage: 'url(/rainforest-3.jpg)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
         >
-          <div className="absolute inset-0 z-0">
-            <Image src="/rainforest-3.jpg" alt="Slideshow fallback" fill className="object-cover" unoptimized />
-          </div>
-          <Slideshow images={["/rainforest-3.jpg", "/rainforest-4.jpg"]} interval={6000} quality={90} />
+          <Slideshow images={["/rainforest-3.jpg", "/rainforest-4.jpg", "/rainforest-5.jpg"]} interval={5000} quality={100} />
         </div>
       </section>
 
@@ -169,25 +172,40 @@ function Slideshow({
   interval?: number;
   quality?: number;
 }) {
-  const duration = images.length * interval;
+  const [index, setIndex] = useState(0);
+  useEffect(() => {
+    if (!images?.length) return;
+    const id = setInterval(() => setIndex((i) => (i + 1) % images.length), interval);
+    return () => clearInterval(id);
+  }, [images.length, interval]);
+
   return (
-    <div className="absolute inset-0 z-10">
+    <div
+      className="absolute"
+      style={{ top: 0, right: 0, bottom: 0, left: 0 }}
+    >
       {images.map((src, i) => (
         <div
           key={src}
-          className="absolute inset-0 ss-slide"
-          style={{ animationDelay: `${i * interval}ms`, animationDuration: `${duration}ms` }}
+          className="absolute"
+          style={{
+            top: 0,
+            right: 0,
+            bottom: 0,
+            left: 0,
+            opacity: i === index ? 1 : 0,
+            transition: "opacity 1000ms ease-in-out",
+          }}
         >
           <div className="relative w-full h-full">
             <Image
               src={src}
-              alt="Rainforest and sourcing imagery"
+              alt="Rainforest slideshow image"
               fill
               priority={i === 0}
-              quality={quality}
+              quality={Math.min(100, Math.max(90, quality))}
               sizes="100vw"
               className="object-cover"
-              unoptimized
             />
           </div>
         </div>
