@@ -1,43 +1,28 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 
-export const metadata: Metadata = {
-  title: "Our Mission – Sabor Selva",
+export const metadata = {
+  title: "Our Mission — Sabor Selva",
   description:
-    "Keeping forests standing through wild-grown cacao & coffee, fair value in the supply chain, and long-term partnerships in Bolivia.",
-};
+    "Keeping forests standing through wild-grown cacao and coffee, clear value chains via our partner in Bolivia, and long-term relationships.",
+} satisfies Metadata;
 
-/* ---------- QUICK SIZE TWEAKS ----------
-   Edit these class strings to resize blocks later.
------------------------------------------ */
-const HERO_HEIGHT = "h-[340px] sm:h-[400px] md:h-[500px]";
-const KPI_HEIGHT = "h-[92px]";
-const METHOD_IMAGE_HEIGHT = "h-[200px] sm:h-[220px] md:h-[240px]";
-const CONSERVE_IMAGE_HEIGHT = "h-[240px] sm:h-[250px] md:h-[270px]";
-
-/** Elegant placeholder so the page looks polished before images are added. */
+// Local image placeholder (same style as About)
 function Placeholder({
   label,
-  height,
+  height = "h-[300px] sm:h-[380px] md:h-[460px]",
   className = "",
-  rounded = "rounded-xl-hero",
-}: {
-  label: string;
-  height: string;
-  className?: string;
-  rounded?: string;
-}) {
+}: { label: string; height?: string; className?: string }) {
   return (
     <div
       className={[
-        "relative ring-line overflow-hidden shadow-soft bg-[var(--cream)] text-stone-700 grid place-items-center",
-        rounded,
+        "relative ring-line overflow-hidden shadow-soft rounded-xl-hero",
+        "bg-gradient-to-br from-emerald-100 to-emerald-200/60 grid place-items-center",
         height,
         className,
       ].join(" ")}
       aria-label={`${label} placeholder`}
     >
-           <div className="text-xs sm:text-sm text-center px-4">
+      <div className="text-stone-700 text-xs sm:text-sm text-center px-4">
         <strong>Image placeholder</strong>
         <br />
         Add <code>/{label}</code> to <code>/public</code>
@@ -49,104 +34,113 @@ function Placeholder({
 export default function MissionPage() {
   return (
     <main>
-      {/* HERO — Banner image with short overlay */}
-      <section className="container section pt-8">
-        <div className="relative w-full ring-line rounded-xl-hero overflow-hidden shadow-soft">
-          {/* Swap Placeholder for real image when you add /mission-hero.jpg */}
-          {/* Real image:
-                    <div className={["relative w-full", HERO_HEIGHT, "max-h-screen"].join(" ")}>
-            <Image src="/mission-hero.jpg" alt="Forest-first harvesting in Bolivia" fill className="object-cover" priority />
-          </div>
-          */}
-          <Placeholder label="mission-hero.jpg" height={HERO_HEIGHT} />
-
-          {/* Overlay copy */}
-          <div className="absolute inset-0 grid place-items-center text-center px-6">
-            <div className="max-w-2xl">
-              <h1 className="text-white drop-shadow-[0_2px_18px_rgba(0,0,0,0.45)]">Our Mission</h1>
-              <p className="mt-2 text-white/95 text-balance">
-                Keeping forests standing through wild-grown cacao &amp; coffee, fair value in the supply chain, and
-                long-term partnerships.
-              </p>
+      {/* HERO */}
+      <section className="relative">
+        <div className="container section pt-8">
+          <div className="relative w-full rounded-xl-hero ring-line overflow-hidden shadow-soft h-[320px] sm:h-[420px] md:h-[520px]">
+            {/* Texture overlay */}
+            <div
+              className="pointer-events-none absolute inset-0 opacity-5 mix-blend-multiply"
+              style={{
+                backgroundImage:
+                  "radial-gradient(circle at 25% 15%, rgba(0,0,0,.05), transparent 40%)",
+              }}
+            />
+            {/* Placeholder now; swap to image later */}
+            <Placeholder label="mission-hero.jpg" height="h-full" />
+            {/* Centered overlay copy */}
+            <div className="absolute inset-0 grid place-items-center text-center px-6">
+              <div className="max-w-2xl">
+                <h1 className="font-serif tracking-[0.012em] text-stone-900">Our Mission</h1>
+                <p className="mt-2 text-stone-800 text-balance">
+                  Keeping forests standing through wild-grown cacao &amp; coffee, fair value in the chain, and long-term partnerships in Bolivia.
+                </p>
+                <div className="mt-3 text-sm muted italic">Salva la Selva</div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* KPIs — 3 metric cards (fill the numbers later) */}
-      <section className="container section pt-6">
-        <div className="grid gap-4 md:grid-cols-3">
-          {[
-            { label: "Above Commodity Price", value: "[x.xx×]", note: "Target multiplier paid at origin*" },
-            { label: "Hectares Conserved", value: "[000]", note: "Areas tied to wild-sourcing practices*" },
-            { label: "Families Supported", value: "[000]", note: "Through partner relationships*" },
-          ].map((kpi) => (
-            <div key={kpi.label} className="card p-5 flex items-center justify-between">
-              <div>
-                <div className="text-sm muted">{kpi.label}</div>
-                <div className="text-2xl font-bold mt-1">{kpi.value}</div>
-              </div>
-              <div className={["chip", KPI_HEIGHT].join(" ")} style={{ alignSelf: "stretch" }}>
-                <span className="w-2 h-2 rounded-full bg-emerald-700" />
-                placeholder
-              </div>
-            </div>
-          ))}
-        </div>
-        <p className="mt-3 text-sm muted">
-          * You can replace these placeholders with verified supplier data and your purchase records.
-        </p>
-      </section>
-
-      {/* HOW IT WORKS — 4 step cards */}
+      {/* KPI STRIP */}
       <section className="container section">
-        <h2 className="text-2xl font-bold">How It Works</h2>
+        <div className="grid gap-4 sm:gap-6 md:grid-cols-3">
+          <div className="card p-5 sm:p-6 text-center">
+            <h3 className="font-serif tracking-[0.012em]">Hectares Linked to Sourcing</h3>
+            <div className="mt-1 text-2xl font-bold">TBD hectares</div>
+          </div>
+          <div className="card p-5 sm:p-6 text-center">
+            <h3 className="font-serif tracking-[0.012em]">Families Supported</h3>
+            <div className="mt-1 text-2xl font-bold">TBD households</div>
+          </div>
+          <div className="card p-5 sm:p-6 text-center">
+            <h3 className="font-serif tracking-[0.012em]">Price vs Commodity</h3>
+            <div className="mt-1 text-2xl font-bold">TBD × baseline</div>
+          </div>
+        </div>
+        <p className="mt-3 text-sm muted">Figures shown are placeholders and will be updated.</p>
+      </section>
+
+      {/* HOW WE WORK */}
+      <section className="container section">
+        <h2 className="font-serif tracking-[0.012em] text-stone-900">How We Work</h2>
         <div className="mt-6 grid gap-6 md:grid-cols-4">
-          {[
-            {
-              title: "Wild Harvest",
-              text: "Selective harvest from native cacao & coffee in and around forests.",
-              img: "how-1.jpg",
-            },
-            {
-              title: "Quality & Post-Harvest",
-              text: "Fermentation, drying, and sorting for clean flavor & traceability.",
-              img: "how-2.jpg",
-            },
-            {
-              title: "Value & Logistics",
-              text: "Fair value at origin with logistics & export handled via our partner.",
-              img: "how-3.jpg",
-            },
-            {
-              title: "Craft & Transparency",
-              text: "Careful roasting/chocolate making; publish impact & pricing notes.",
-              img: "how-4.jpg",
-            },
-          ].map((step) => (
-            <article key={step.title} className="card overflow-hidden">
-              {/* Replace with real images if you have them */}
-              <Placeholder label={step.img} height={METHOD_IMAGE_HEIGHT} rounded="" />
-              {/* Real image block:
-                     <div className={["relative w-full", METHOD_IMAGE_HEIGHT, "max-h-screen"].join(" ")}>
-                <Image src={`/${step.img}`} alt={step.title} fill className="object-cover" />
-              </div>
-              */}
-              <div className="card-content">
-                <h3 className="font-bold">{step.title}</h3>
-                <p className="mt-2 text-stone-700 leading-relaxed">{step.text}</p>
-              </div>
-            </article>
-          ))}
+          {/* Step 1 */}
+          <article className="card overflow-hidden">
+            <Placeholder label="how-1.jpg" height="h-[200px] sm:h-[220px] md:h-[240px]" />
+            <div className="card-content">
+              <h3 className="font-serif tracking-[0.012em]">Wild Harvest</h3>
+              <ul className="mt-2 list-disc pl-5 text-stone-700 space-y-1">
+                <li>Native cacao/coffee within forest mosaics.</li>
+                <li>Selective picking with canopy protection.</li>
+                <li>Traceable lots from collection points.</li>
+              </ul>
+            </div>
+          </article>
+          {/* Step 2 */}
+          <article className="card overflow-hidden">
+            <Placeholder label="how-2.jpg" height="h-[200px] sm:h-[220px] md:h-[240px]" />
+            <div className="card-content">
+              <h3 className="font-serif tracking-[0.012em]">Post-Harvest Quality</h3>
+              <ul className="mt-2 list-disc pl-5 text-stone-700 space-y-1">
+                <li>Careful fermentation and drying.</li>
+                <li>Sorting for uniformity and moisture.</li>
+                <li>Flavor-focused QA and sample cupping.</li>
+              </ul>
+            </div>
+          </article>
+          {/* Step 3 */}
+          <article className="card overflow-hidden">
+            <Placeholder label="how-3.jpg" height="h-[200px] sm:h-[220px] md:h-[240px]" />
+            <div className="card-content">
+              <h3 className="font-serif tracking-[0.012em]">Value &amp; Logistics</h3>
+              <ul className="mt-2 list-disc pl-5 text-stone-700 space-y-1">
+                <li>Executed via our partner in Bolivia.</li>
+                <li>Producer payments with clear premiums.</li>
+                <li>Efficient transport and export handling.</li>
+              </ul>
+            </div>
+          </article>
+          {/* Step 4 */}
+          <article className="card overflow-hidden">
+            <Placeholder label="how-4.jpg" height="h-[200px] sm:h-[220px] md:h-[240px]" />
+            <div className="card-content">
+              <h3 className="font-serif tracking-[0.012em]">Craft &amp; Transparency</h3>
+              <ul className="mt-2 list-disc pl-5 text-stone-700 space-y-1">
+                <li>Roasting and making focused on flavor.</li>
+                <li>Lot-level traceability and labeling.</li>
+                <li>Open, clear communication.</li>
+              </ul>
+            </div>
+          </article>
         </div>
       </section>
 
-      {/* VALUE CHAIN & FAIRNESS — reflect that you buy via Saltus */}
+      {/* VALUE CHAIN TRANSPARENCY */}
       <section className="container section">
-        <h2 className="text-2xl font-bold">Fair Value in the Supply Chain</h2>
-        <p className="mt-2 text-stone-700 max-w-3xl">
-          We purchase through our Bolivian partner and align our pricing with their farmer payment programs and
-          post-harvest services. Below is a simple template you can complete with verified figures.
+        <h2 className="font-serif tracking-[0.012em] text-stone-900">Value Chain Transparency</h2>
+        <p className="mt-2 text-stone-700 max-w-[60ch]">
+          We align pricing with producer payment programs and post-harvest services via our partner in Bolivia. The table below shows how we structure value.
         </p>
 
         <div className="mt-6 overflow-x-auto">
@@ -155,41 +149,17 @@ export default function MissionPage() {
               <tr className="text-left">
                 <th className="py-3 pr-4">Component</th>
                 <th className="py-3 pr-4">Definition</th>
-                <th className="py-3 pr-0">Placeholder</th>
+                <th className="py-3 pr-0">Placeholder Value</th>
               </tr>
             </thead>
             <tbody>
               {[
-                {
-                  c: "Commodity baseline",
-                  d: "Market reference price (USD/kg) at time of purchase",
-                  v: "[0.00]",
-                },
-                {
-                  c: "Farm-gate base (partner)",
-                  d: "Base price paid to producers by partner (USD/kg)",
-                  v: "[0.00]",
-                },
-                {
-                  c: "Quality premium",
-                  d: "Premium for fermentation, moisture, sorting, etc.",
-                  v: "[0.00]",
-                },
-                {
-                  c: "Services & logistics",
-                  d: "Local processing, storage, transport to export",
-                  v: "[0.00]",
-                },
-                {
-                  c: "Total at origin",
-                  d: "Sum of partner payments & services",
-                  v: "[0.00]",
-                },
-                {
-                  c: "Our purchase price",
-                  d: "Price we pay to partner (incoterm notes)",
-                  v: "[0.00]",
-                },
+                { c: "Commodity Baseline", d: "Market reference price at time of purchase (USD/kg)", v: "[0.00]" },
+                { c: "Farm-Gate Base (partner)", d: "Base price paid to producers by partner (USD/kg)", v: "[0.00]" },
+                { c: "Quality Premium", d: "Premium for fermentation, moisture, sorting, etc.", v: "[0.00]" },
+                { c: "Services & Logistics", d: "Local processing, storage, and transport to export", v: "[0.00]" },
+                { c: "Total at Origin", d: "Sum of partner payments and services", v: "[0.00]" },
+                { c: "Our Purchase Price", d: "Price we pay to partner (incoterm notes)", v: "[0.00]" },
               ].map((row, i) => (
                 <tr key={i} className="border-t">
                   <td className="py-3 pr-4 font-medium">{row.c}</td>
@@ -201,77 +171,64 @@ export default function MissionPage() {
           </table>
         </div>
 
-        <p className="mt-3 text-sm muted">
-          Note: Replace placeholders with documented figures from your partner; include date ranges and currency.
+        <p className="mt-3 text-sm muted max-w-[60ch]">
+          We buy via Saltus in Bolivia. Their producer payment program underpins farm-gate and quality premiums. We publish what we pay them and update these values as we verify.
         </p>
+        <div className="mt-3">
+          <a
+            href="https://www.en.saltuschocolate.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-outline"
+          >
+            Visit Saltus
+          </a>
+        </div>
       </section>
 
-      {/* CONSERVATION IMPACT — mix of A (hectares) & B (practices) */}
+      {/* CONSERVATION & BIODIVERSITY */}
       <section className="container section">
-        <h2 className="text-2xl font-bold">Conservation Impact</h2>
+        <h2 className="font-serif tracking-[0.012em] text-stone-900">Conservation &amp; Biodiversity</h2>
         <div className="mt-2 grid gap-6 md:grid-cols-2 items-start">
           <div>
-            <ul className="list-disc pl-5 space-y-2 text-stone-700">
-              <li>
-                <strong>Hectares conserved:</strong> [000] tied to wild-grown sourcing and forest-friendly practices.
-              </li>
-              <li>
-                <strong>Biodiversity practices:</strong> Wild harvest, selective pruning, protecting shade canopy, low-impact transport.
-              </li>
-              <li>
-                <strong>Zero-deforestation policy:</strong> [Describe your stance & verification approach].
-              </li>
+            <p className="text-stone-800 max-w-[60ch]">
+              Our stance centers on wild-grown ingredients and forest-friendly logistics. We prioritize biodiversity and traceability at each step.
+            </p>
+            <ul className="mt-3 list-disc pl-5 space-y-2 text-stone-700">
+              <li>Wild-grown and zero-deforestation stance.</li>
+              <li>Habitat-friendly harvesting windows.</li>
+              <li>Mixed-species mosaics &amp; biodiversity first.</li>
+              <li>Traceable lots and careful transport.</li>
             </ul>
           </div>
-          <div className="grid grid-cols-2 gap-4">
-            {/* Swap to real images when ready */}
-            <Placeholder label="conservation-1.jpg" height={CONSERVE_IMAGE_HEIGHT} />
-            <Placeholder label="conservation-2.jpg" height={CONSERVE_IMAGE_HEIGHT} />
-            {/* Or real images:
-            <div className={["relative w-full", CONSERVE_IMAGE_HEIGHT, "max-h-screen"].join(" ")}>
-              <Image src="/conservation-1.jpg" alt="Forest landscape" fill className="object-cover rounded-xl-hero ring-line shadow-soft" />
-            </div>
-             <div className={["relative w-full", CONSERVE_IMAGE_HEIGHT, "max-h-screen"].join(" ")}>
-              <Image src="/conservation-2.jpg" alt="Biodiversity detail" fill className="object-cover rounded-xl-hero ring-line shadow-soft" />
-            </div>
-            */}
+          <div className="grid gap-4">
+            <Placeholder label="conservation-1.jpg" height="h-[220px] sm:h-[260px] md:h-[300px]" />
+            <Placeholder label="conservation-2.jpg" height="h-[220px] sm:h-[260px] md:h-[300px]" />
           </div>
         </div>
       </section>
 
-      {/* PARTNER / COMMUNITY — Saltus highlight */}
+      {/* PARTNER HIGHLIGHT — Saltus */}
       <section className="container section">
-        <div className="card p-6">
-          <h2 className="text-2xl font-bold">Our Partner in Bolivia</h2>
-          <p className="mt-2 text-stone-700 max-w-3xl">
-            We source through <strong>Saltus</strong>, a Bolivian company focused on quality and forest-friendly value
-            chains. We’ll share their public program details and data points here as we publish our reports.
+        <div className="card p-6 sm:p-7">
+          <h2 className="font-serif tracking-[0.012em] text-stone-900">Our Partner in Bolivia</h2>
+          <p className="mt-2 text-stone-700 max-w-[60ch]">
+            We work with <a href="https://www.en.saltuschocolate.com/" target="_blank" rel="noopener noreferrer" className="underline decoration-amber-500/70 hover:decoration-amber-600">Saltus</a>, whose producer payment programs and quality services support clear, quality-driven value chains.
           </p>
-          <div className="mt-3">
-            <a
-              href="https://www.en.saltuschocolate.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-outline"
-            >
-              Visit Saltus
-            </a>
-          </div>
         </div>
       </section>
 
-      {/* CTA */}
+      {/* CTA — Explore Products */}
       <section className="container section">
         <div className="card p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
-            <h3 className="font-bold">Explore our products</h3>
-            <p className="text-stone-700">Discover bars and coffees shaped by forest-first sourcing.</p>
+            <h3 className="font-serif tracking-[0.012em]">Discover the flavors of the forest.</h3>
+            <p className="text-stone-700 max-w-[60ch]">Explore limited lots and careful roasts shaped by biodiversity-first sourcing.</p>
           </div>
-          <Link href="/products" className="btn btn-primary">
-            Explore Products
-          </Link>
+        <a href="/#products" className="btn btn-primary">Explore Products</a>
         </div>
       </section>
     </main>
   );
 }
+
