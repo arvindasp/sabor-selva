@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata = {
   title: "Our Mission — Sabor Selva",
@@ -225,10 +226,9 @@ export default function MissionPage() {
             <h3 className="font-serif tracking-[0.012em]">Discover the flavors of the forest.</h3>
             <p className="text-stone-700 max-w-[60ch]">Explore limited lots and careful roasts shaped by biodiversity-first sourcing.</p>
           </div>
-        <a href="/#products" className="btn btn-primary">Explore Products</a>
+        <Link href="/#products" className="btn btn-primary">Explore Products</Link>
         </div>
       </section>
     </main>
   );
 }
-
