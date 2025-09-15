@@ -1,10 +1,15 @@
 import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { Playfair_Display } from "next/font/google";
 
 export const metadata = {
   title: "About Sabor Selva",
   description:
     "Our origin story and sense of place—luxury chocolate & coffee, rooted in the Bolivian rainforest.",
 } satisfies Metadata;
+
+const playfair = Playfair_Display({ subsets: ["latin"] });
 
 function Placeholder({
   label,
@@ -33,37 +38,27 @@ function Placeholder({
 export default function AboutPage() {
   return (
     <main>
-      {/* Hero */}
-      <section className="relative">
-        <div className="container section pt-8">
-          <div className="relative w-full rounded-xl-hero ring-line overflow-hidden shadow-soft h-[320px] sm:h-[420px] md:h-[520px]">
-            {/* Texture overlay */}
-            <div
-              className="pointer-events-none absolute inset-0 opacity-5 mix-blend-multiply"
-              style={{
-                backgroundImage:
-                  "radial-gradient(circle at 25% 15%, rgba(0,0,0,.05), transparent 40%)",
-              }}
-            />
-            {/* Placeholder now; swap to <Image src="/about-hero.jpg" .../> later */}
-            <Placeholder
-              label="about-hero.jpg"
-              height="h-full"
-              className="!bg-gradient-to-br !from-emerald-100 !to-emerald-200/60"
-            />
-            {/* Centered overlay copy */}
-            <div className="absolute inset-0 grid place-items-center text-center px-6">
-              <div className="max-w-2xl">
-                <h1 className="font-serif tracking-[0.012em] text-3xl sm:text-4xl md:text-5xl text-stone-900">
-                  About Sabor Selva
-                </h1>
-                <p className="mt-2 text-stone-800 text-balance">
-                  Chocolate &amp; coffee born in the Bolivian rainforest, crafted with dignity.
-                </p>
-                <div className="mt-3 text-sm muted italic">Salva la Selva</div>
-              </div>
-            </div>
-          </div>
+      {/* Hero (full-bleed like home) */}
+      <section
+        className="relative left-1/2 -translate-x-1/2 w-screen h-[70vh] min-h-[460px] flex items-center justify-center text-center overflow-hidden"
+      >
+        <Image
+          src="/about-hero.jpg"
+          alt="About Sabor Selva hero image"
+          fill
+          priority
+          quality={100}
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 z-20 bg-black/30" />
+        <div className="relative z-30 px-4">
+          <h1
+            className={`${playfair.className} tracking-wide-hero drop-shadow-[0_2px_18px_rgba(0,0,0,0.45)] text-5xl md:text-7xl`}
+            style={{ color: "#ffffff" }}
+          >
+            About Us
+          </h1>
         </div>
       </section>
 
@@ -127,21 +122,52 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Photo strip */}
+      {/* Photo gallery (larger, with subtle accents) */}
       <section className="container section">
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          <Placeholder
-            label="about-1.jpg"
-            height="h-[220px] sm:h-[260px] md:h-[300px]"
-          />
-          <Placeholder
-            label="about-2.jpg"
-            height="h-[220px] sm:h-[260px] md:h-[300px]"
-          />
-          <Placeholder
-            label="about-3.jpg"
-            height="h-[220px] sm:h-[260px] md:h-[300px]"
-          />
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-5 sm:gap-6">
+          {/* Item 1 */}
+          <figure className="group relative h-[280px] sm:h-[340px] md:h-[420px] rounded-xl-hero ring-line overflow-hidden shadow-soft">
+            <Image
+              src="/about-1.jpg"
+              alt="About photo 1"
+              fill
+              quality={95}
+              sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+              className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+            />
+            {/* Gold micro-dot accent */}
+            <span aria-hidden className="absolute top-3 right-3 h-1.5 w-1.5 rounded-full bg-[var(--gold)] shadow-subtle" />
+            {/* Soft bottom vignette */}
+            <span aria-hidden className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/20 to-transparent" />
+          </figure>
+
+          {/* Item 2 */}
+          <figure className="group relative h-[280px] sm:h-[340px] md:h-[420px] rounded-xl-hero ring-line overflow-hidden shadow-soft">
+            <Image
+              src="/about-2.jpg"
+              alt="About photo 2"
+              fill
+              quality={95}
+              sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+              className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+            />
+            <span aria-hidden className="absolute top-3 right-3 h-1.5 w-1.5 rounded-full bg-[var(--gold)] shadow-subtle" />
+            <span aria-hidden className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/20 to-transparent" />
+          </figure>
+
+          {/* Item 3 */}
+          <figure className="group relative h-[280px] sm:h-[340px] md:h-[420px] rounded-xl-hero ring-line overflow-hidden shadow-soft">
+            <Image
+              src="/about-3.jpg"
+              alt="About photo 3"
+              fill
+              quality={95}
+              sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+              className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+            />
+            <span aria-hidden className="absolute top-3 right-3 h-1.5 w-1.5 rounded-full bg-[var(--gold)] shadow-subtle" />
+            <span aria-hidden className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/20 to-transparent" />
+          </figure>
         </div>
       </section>
 
@@ -178,12 +204,11 @@ export default function AboutPage() {
               Read more about conservation impact and fair wages.
             </p>
           </div>
-          <a href="/our-mission" className="btn btn-primary">
+          <Link href="/our-mission" className="btn btn-primary">
             Read Our Mission
-          </a>
+          </Link>
         </div>
       </section>
     </main>
   );
 }
-

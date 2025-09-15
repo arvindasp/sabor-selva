@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
+import { Playfair_Display } from "next/font/google";
 
 export const metadata = {
   title: "Our Mission — Sabor Selva",
   description:
     "Keeping forests standing through wild-grown cacao and coffee, clear value chains via our partner in Bolivia, and long-term relationships.",
 } satisfies Metadata;
+
+const playfair = Playfair_Display({ subsets: ["latin"] });
 
 // Local image placeholder (same style as About)
 function Placeholder({
@@ -36,30 +40,26 @@ export default function MissionPage() {
   return (
     <main>
       {/* HERO */}
-      <section className="relative">
-        <div className="container section pt-8">
-          <div className="relative w-full rounded-xl-hero ring-line overflow-hidden shadow-soft h-[320px] sm:h-[420px] md:h-[520px]">
-            {/* Texture overlay */}
-            <div
-              className="pointer-events-none absolute inset-0 opacity-5 mix-blend-multiply"
-              style={{
-                backgroundImage:
-                  "radial-gradient(circle at 25% 15%, rgba(0,0,0,.05), transparent 40%)",
-              }}
-            />
-            {/* Placeholder now; swap to image later */}
-            <Placeholder label="mission-hero.jpg" height="h-full" />
-            {/* Centered overlay copy */}
-            <div className="absolute inset-0 grid place-items-center text-center px-6">
-              <div className="max-w-2xl">
-                <h1 className="font-serif tracking-[0.012em] text-stone-900">Our Mission</h1>
-                <p className="mt-2 text-stone-800 text-balance">
-                  Keeping forests standing through wild-grown cacao &amp; coffee, fair value in the chain, and long-term partnerships in Bolivia.
-                </p>
-                <div className="mt-3 text-sm muted italic">Salva la Selva</div>
-              </div>
-            </div>
-          </div>
+      <section
+        className="relative left-1/2 -translate-x-1/2 w-screen h-[70vh] min-h-[460px] flex items-center justify-center text-center overflow-hidden"
+      >
+        <Image
+          src="/mission-hero.jpg"
+          alt="Our Mission hero image"
+          fill
+          priority
+          quality={100}
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 z-20 bg-black/30" />
+        <div className="relative z-30 px-4">
+          <h1
+            className={`${playfair.className} tracking-wide-hero drop-shadow-[0_2px_18px_rgba(0,0,0,0.45)] text-5xl md:text-7xl`}
+            style={{ color: "#ffffff" }}
+          >
+            Our Mission
+          </h1>
         </div>
       </section>
 
