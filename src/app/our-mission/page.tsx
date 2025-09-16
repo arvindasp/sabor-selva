@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { Playfair_Display } from "next/font/google";
+import HowWeWorkGallery, { type GalleryItem } from "@/components/HowWeWorkGallery";
 
 export const metadata = {
   title: "Our Mission — Sabor Selva",
@@ -37,6 +38,14 @@ function Placeholder({
 }
 
 export default function MissionPage() {
+  const steps: GalleryItem[] = [
+    { src: "/how-1.jpg", alt: "How we work image 1", text: "Selective wild harvest preserves canopy and habitat." },
+    { src: "/how-2.jpg", alt: "How we work image 2", text: "Careful picking and sorting at collection points." },
+    { src: "/how-3.jpg", alt: "How we work image 3", text: "Post-harvest handling supports clean, traceable flavor." },
+    { src: "/how-4.jpg", alt: "How we work image 4", text: "Community hubs connect value, logistics, and services." },
+    { src: "/how-5.jpg", alt: "How we work image 5", text: "Quality premiums reward craft and careful work." },
+    { src: "/how-6.jpg", alt: "How we work image 6", text: "Transport links producers to markets with transparency." },
+  ];
   return (
     <main>
       {/* HERO */}
@@ -82,58 +91,11 @@ export default function MissionPage() {
         <p className="mt-3 text-sm muted">Figures shown are placeholders and will be updated.</p>
       </section>
 
-      {/* HOW WE WORK */}
+      {/* HOW WE WORK (image gallery with lightbox, 6 items) */}
       <section className="container section">
         <h2 className="font-serif tracking-[0.012em] text-stone-900">How We Work</h2>
-        <div className="mt-6 grid gap-6 md:grid-cols-4">
-          {/* Step 1 */}
-          <article className="card overflow-hidden">
-            <Placeholder label="how-1.jpg" height="h-[200px] sm:h-[220px] md:h-[240px]" />
-            <div className="card-content">
-              <h3 className="font-serif tracking-[0.012em]">Wild Harvest</h3>
-              <ul className="mt-2 list-disc pl-5 text-stone-700 space-y-1">
-                <li>Native cacao/coffee within forest mosaics.</li>
-                <li>Selective picking with canopy protection.</li>
-                <li>Traceable lots from collection points.</li>
-              </ul>
-            </div>
-          </article>
-          {/* Step 2 */}
-          <article className="card overflow-hidden">
-            <Placeholder label="how-2.jpg" height="h-[200px] sm:h-[220px] md:h-[240px]" />
-            <div className="card-content">
-              <h3 className="font-serif tracking-[0.012em]">Post-Harvest Quality</h3>
-              <ul className="mt-2 list-disc pl-5 text-stone-700 space-y-1">
-                <li>Careful fermentation and drying.</li>
-                <li>Sorting for uniformity and moisture.</li>
-                <li>Flavor-focused QA and sample cupping.</li>
-              </ul>
-            </div>
-          </article>
-          {/* Step 3 */}
-          <article className="card overflow-hidden">
-            <Placeholder label="how-3.jpg" height="h-[200px] sm:h-[220px] md:h-[240px]" />
-            <div className="card-content">
-              <h3 className="font-serif tracking-[0.012em]">Value &amp; Logistics</h3>
-              <ul className="mt-2 list-disc pl-5 text-stone-700 space-y-1">
-                <li>Executed via our partner in Bolivia.</li>
-                <li>Producer payments with clear premiums.</li>
-                <li>Efficient transport and export handling.</li>
-              </ul>
-            </div>
-          </article>
-          {/* Step 4 */}
-          <article className="card overflow-hidden">
-            <Placeholder label="how-4.jpg" height="h-[200px] sm:h-[220px] md:h-[240px]" />
-            <div className="card-content">
-              <h3 className="font-serif tracking-[0.012em]">Craft &amp; Transparency</h3>
-              <ul className="mt-2 list-disc pl-5 text-stone-700 space-y-1">
-                <li>Roasting and making focused on flavor.</li>
-                <li>Lot-level traceability and labeling.</li>
-                <li>Open, clear communication.</li>
-              </ul>
-            </div>
-          </article>
+        <div className="mt-6">
+          <HowWeWorkGallery items={steps} />
         </div>
       </section>
 

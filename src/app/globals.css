@@ -198,6 +198,9 @@ html:focus-within { scroll-behavior: smooth; }
   .text-balance { text-wrap: balance; }
   .muted { color: var(--muted); }
 }
+/* CSS-only lightbox for gallery overlays */
+.lightbox { display: none; }
+.lightbox:target { display: block; }
 /* Simple CSS-driven crossfade for the hero slideshow */
 @keyframes ss-fade {
   0% { opacity: 1; }
