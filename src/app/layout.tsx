@@ -44,6 +44,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </nav>
           </div>
         </footer>
+        {/* Modal portal root */}
+        <div id="modal-portal" />
       </body>
     </html>
   );
