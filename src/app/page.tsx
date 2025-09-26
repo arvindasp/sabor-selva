@@ -2,10 +2,8 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { Playfair_Display, Merriweather } from "next/font/google";
-
-const playfair = Playfair_Display({ subsets: ["latin"] });
-const merriweather = Merriweather({ subsets: ["latin"], weight: ["400", "700"] });
+import SectionHeading from "@/components/SectionHeading";
+import { Card } from "@/components/Card";
 
 function FadeIn({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   const ref = useRef<HTMLDivElement | null>(null);
@@ -43,38 +41,35 @@ export default function HomePage() {
     <div className="w-full">
       {/* Full-bleed hero slideshow */}
       <section
-        className="relative left-1/2 -translate-x-1/2 w-screen h-[70vh] min-h-[460px] flex items-center justify-center text-center overflow-hidden bg-cover bg-center"
+        className="relative left-1/2 -translate-x-1/2 w-screen h-[70vh] min-h-[460px] flex items-center justify-center text-center overflow-hidden bg-cover bg-center text-white"
         style={{ backgroundImage: 'url(/rainforest-hero.jpg)' }}
       >
         {/* Static hero only; slideshow moved below */}
         <div className="absolute inset-0 z-20 bg-black/30" />
-        <FadeIn className="relative z-30 px-4">
-          <h1
-            className={`${playfair.className} tracking-wide-hero drop-shadow-[0_2px_18px_rgba(0,0,0,0.45)] text-4xl md:text-6xl`}
-            style={{ color: "#ffffff" }}
-          >
+        <FadeIn className="relative z-30 px-4 text-white">
+          <SectionHeading as="h1" className="drop-shadow-[0_2px_18px_rgba(0,0,0,0.45)] text-white hero-title">
             SABOR SELVA
-          </h1>
+          </SectionHeading>
         </FadeIn>
       </section>
 
       {/* Slogan */}
       <section className="section pt-8 pb-8">
         <FadeIn>
-          <h2 className={`${merriweather.className} text-center text-3xl md:text-4xl text-balance`}>
+          <SectionHeading as="h2" centered className="text-balance">
             &ldquo;Salva La Selva&rdquo;
-          </h2>
+          </SectionHeading>
         </FadeIn>
       </section>
 
       {/* Small about text box */}
       <section className="section">
         <FadeIn className="max-w-3xl mx-auto">
-          <div className="card p-6 md:p-8">
-            <p className="prose-basic">
+          <Card className="p-6 md:p-8">
+            <p className="prose-basic max-w-[60ch]">
               Sabor Selva crafts premium chocolate and coffee from wild-grown cacao and forest coffee in Bolivia. We partner with a trusted local company to source transparently, honoring people and place. Every bar and bag is made to feel refined and timeless—luxury that keeps the rainforest standing.
             </p>
-          </div>
+          </Card>
         </FadeIn>
       </section>
 
@@ -84,46 +79,46 @@ export default function HomePage() {
           {/* Row 1 */}
           <FadeIn>
             <div className="grid grid-cols-2 gap-6 items-center">
-              <div className="card p-6 md:p-8">
-                <h3 className={`${playfair.className} mb-3`}>Our Cacao</h3>
-                <p className="text-[0.98rem] leading-relaxed">
+              <Card className="p-6 md:p-8">
+                <SectionHeading as="h3">Our Cacao</SectionHeading>
+                <p className="text-[0.98rem] leading-relaxed max-w-[60ch]">
                   Our cacao is gathered from native trees that grow beneath a living canopy. The fruit is harvested by hand, then carefully fermented and dried to preserve its natural character. The result is an elegant, layered flavor—distinct to the forest itself.
                 </p>
-              </div>
-              <div className="card flex items-center justify-center h-44 md:h-56 ring-line bg-[#f3f4f6]">
+              </Card>
+              <Card className="flex items-center justify-center h-44 md:h-56 ring-line bg-[#f3f4f6]">
                 <span className="muted">Image Placeholder</span>
-              </div>
+              </Card>
             </div>
           </FadeIn>
 
           {/* Row 2 */}
           <FadeIn>
             <div className="grid grid-cols-2 gap-6 items-center">
-              <div className="card order-2 p-6 md:p-8">
-                <h3 className={`${playfair.className} mb-3`}>Our Coffee</h3>
-                <p className="text-[0.98rem] leading-relaxed">
+              <Card className="order-2 p-6 md:p-8">
+                <SectionHeading as="h3">Our Coffee</SectionHeading>
+                <p className="text-[0.98rem] leading-relaxed max-w-[60ch]">
                   Placeholder text about your coffee varieties, roasting approach, and
                   the communities you support. Replace with your content.
                 </p>
-              </div>
-              <div className="card order-1 md:order-1 flex items-center justify-center h-44 md:h-56 ring-line bg-[#f3f4f6]">
+              </Card>
+              <Card className="order-1 md:order-1 flex items-center justify-center h-44 md:h-56 ring-line bg-[#f3f4f6]">
                 <span className="muted">Image Placeholder</span>
-              </div>
+              </Card>
             </div>
           </FadeIn>
 
           {/* Row 3 */}
           <FadeIn>
             <div className="grid grid-cols-2 gap-6 items-center">
-              <div className="card p-6 md:p-8">
-                <h3 className={`${playfair.className} mb-3`}>Forest-First Sourcing</h3>
-                <p className="text-[0.98rem] leading-relaxed">
+              <Card className="p-6 md:p-8">
+                <SectionHeading as="h3">Forest-First Sourcing</SectionHeading>
+                <p className="text-[0.98rem] leading-relaxed max-w-[60ch]">
                   We choose value chains that work with nature, not against it. Wild harvests avoid clearing land, respect biodiversity, and support communities who live in and around the forest. We purchase via our Bolivian partner and align with their producer-payment program, prioritizing traceability, fair value, and long-term relationships.
                 </p>
-              </div>
-              <div className="card flex items-center justify-center h-44 md:h-56 ring-line bg-[#f3f4f6]">
+              </Card>
+              <Card className="flex items-center justify-center h-44 md:h-56 ring-line bg-[#f3f4f6]">
                 <span className="muted">Image Placeholder</span>
-              </div>
+              </Card>
             </div>
           </FadeIn>
         </div>
@@ -148,11 +143,11 @@ export default function HomePage() {
       {/* Final larger text box */}
       <section className="section">
         <FadeIn className="max-w-4xl mx-auto">
-          <div className="card p-8 md:p-12">
-            <p className="prose-basic text-lg">
+          <Card className="p-6 md:p-8">
+            <p className="prose-basic text-lg max-w-[60ch]">
               Sabor Selva exists to show that exceptional taste and ecological care can be one and the same. We focus on wild-grown ingredients, small-scale post-harvest care, and transparent purchasing through our Bolivian partner. Our aim is simple: create products worthy of a special moment, while helping make it possible for forests—and the people who protect them—to thrive. We are building for the long term: slow expansions, considered collaborations, and disclosures as our sourcing deepens. Until then, enjoy the purity of origin in every bar and bag, and know that your choice supports dignity, continuity, and the living rainforest. Where to find us (Stockists and cafés will be listed here as they launch.)
             </p>
-          </div>
+          </Card>
         </FadeIn>
       </section>
     </div>

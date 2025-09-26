@@ -197,6 +197,8 @@ html:focus-within { scroll-behavior: smooth; }
   .rounded-xl-hero { border-radius: calc(var(--radius) + 18px); }
   .text-balance { text-wrap: balance; }
   .muted { color: var(--muted); }
+  /* Force-white text utility for hero titles (ensures override) */
+  .hero-title { color: #ffffff !important; }
 }
 /* CSS-only lightbox for gallery overlays */
 .lightbox { display: none; }

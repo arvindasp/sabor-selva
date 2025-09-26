@@ -1,76 +1,57 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
+import Lightbox from "@/components/Lightbox";
+import { EASE_LUX } from "@/lib/ui";
 
 export type GalleryItem = { src: string; alt: string; text?: string };
 
 export default function HowWeWorkGallery({ items }: { items: GalleryItem[] }) {
   const [open, setOpen] = useState<number | null>(null);
-  const panelRef = useRef<HTMLDivElement | null>(null);
-  // Labels for the chain navigation
-  const labels = [
-    "1) Origins",
-    "2) Gathering",
-    "3) Ferment",
-    "4) Curing",
-    "5) Livelihoods",
-    "6) Legacy",
-  ];
 
-  // When opening modal: lock scroll, show with fade-in, focus trap
-  // Ensure the inline panel scrolls into view when opened
-  useEffect(() => {
-    if (open !== null && panelRef.current) {
-      panelRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-  }, [open]);
-
-  // Allow closing with Escape
-  useEffect(() => {
-    function onKey(e: KeyboardEvent) {
-      if (e.key === 'Escape') setOpen(null);
-    }
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, []);
+  const onPrev = () => setOpen((prev) => (prev === null ? 0 : (prev - 1 + items.length) % items.length));
+  const onNext = () => setOpen((prev) => (prev === null ? 0 : (prev + 1) % items.length));
 
   return (
     <div>
-      {/* Chain of step links */}
-      <nav className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-[1.05rem]">
-        {items.map((_, idx) => (
-          <div key={idx} className="flex items-center gap-3">
-            <button
-              type="button"
-              className="font-serif tracking-[0.08em] text-stone-800 hover:text-[#0b3d2e] transition-colors underline decoration-amber-500/40 underline-offset-4"
-              onClick={() => setOpen(idx)}
-              aria-label={`Open step ${idx + 1}`}
-            >
-              {labels[idx] ?? `Step ${idx + 1}`}
-            </button>
-            {idx < items.length - 1 && (
-              <span aria-hidden className="text-stone-400">→</span>
-            )}
-          </div>
+      {/* Grid of visual tiles */}
+      <div className="grid gap-4 sm:gap-5 grid-cols-2 md:grid-cols-3">
+        {items.map((it, idx) => (
+          <button
+            key={idx}
+            type="button"
+            aria-label={`Open step ${idx + 1}`}
+            onClick={() => setOpen(idx)}
+            className={`group relative overflow-hidden rounded-xl-hero ring-line shadow-subtle focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/40 motion-safe:transition transform motion-safe:duration-300 ${EASE_LUX} hover:scale-[1.02] hover:shadow-soft`}
+          >
+            <div className="relative h-[160px] sm:h-[200px] md:h-[220px]">
+              <Image
+                src={it.src}
+                alt={it.alt}
+                fill
+                sizes="(min-width: 1024px) 33vw, 50vw"
+                className="object-cover"
+                priority={idx === 0}
+              />
+            </div>
+            <span className="sr-only">{it.alt}</span>
+          </button>
         ))}
-      </nav>
+      </div>
 
-      {/* Warm backdrop (click to close). No scroll lock. */}
-      {open !== null && (
-        <button
-          aria-label="Close"
-          onClick={() => setOpen(null)}
-          className="fixed inset-0 z-[90] bg-black/10"
-        />
-      )}
-
-      {open !== null && (
-        <div ref={panelRef} className="relative z-[100] mt-8">
-          <div className="rounded-xl-hero ring-line shadow-soft overflow-hidden bg-[var(--surface)]">
+      <Lightbox
+        open={open !== null}
+        onClose={() => setOpen(null)}
+        onPrev={open !== null ? onPrev : undefined}
+        onNext={open !== null ? onNext : undefined}
+        label={open !== null ? items[open].alt : undefined}
+      >
+        {open !== null && (
+          <>
             <div style={{ height: 1, backgroundColor: "rgba(191,160,106,0.3)" }} />
             <div className="grid md:grid-cols-2 items-stretch">
-              <div className="relative min-h-[320px] sm:min-h-[360px] md:min-h-[400px] lg:min-h-[440px] bg-black">
+              <div className="relative min-h-[300px] sm:min-h-[360px] md:min-h-[420px] bg-black">
                 <Image
                   src={items[open].src}
                   alt={items[open].alt}
@@ -88,14 +69,13 @@ export default function HowWeWorkGallery({ items }: { items: GalleryItem[] }) {
                 </div>
                 <h3 className="mt-2 font-serif tracking-[0.012em] text-stone-900">{items[open].alt}</h3>
                 <p className="mt-3 text-stone-700 max-w-[60ch]">
-                  {items[open].text || "Replace this with your method notes for this step."}
+                  {items[open].text || 'Replace this with your method notes for this step.'}
                 </p>
-                {/* No close button or next/prev per spec */}
               </div>
             </div>
-          </div>
-        </div>
-      )}
+          </>
+        )}
+      </Lightbox>
     </div>
   );
 }

@@ -1,16 +1,14 @@
 import Link from "next/link";
-import { Playfair_Display } from "next/font/google";
-const playfair = Playfair_Display({ subsets: ["latin"] });
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-[var(--line)] bg-[var(--bg)]/85 glass">
+    <header className="sticky top-0 z-50 w-full border-b border-[var(--line)] bg-[var(--bg)]">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
         {/* Single-row header: brand left, links spread evenly across */}
         <div className="flex items-center gap-6 py-6 sm:py-8">
           <Link
             href="/"
-            className={`${playfair.className} text-[1.8rem] sm:text-[2.5rem] lg:text-[3rem] leading-none tracking-[0.08em] text-stone-900 whitespace-nowrap`}
+            className="font-serif font-bold leading-none tracking-[0.08em] text-stone-900 whitespace-nowrap text-[1.8rem] sm:text-[2.2rem] lg:text-[2.6rem]"
             aria-label="Sabor Selva home"
           >
             Sabor Selva
