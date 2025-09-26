@@ -65,17 +65,17 @@ export default function MissionPage() {
         <div className="grid gap-5 md:grid-cols-3 mt-8">
           <div className="card p-6 text-left">
             <h3 className={`${playfair.className} tracking-[0.012em]`}>People</h3>
-            <p className="mt-2 text-stone-700 max-w-[60ch]">Dignity, safety, and options in-place: access to education, basic health, and fair income from the forest.</p>
+            <p className="mt-2 text-stone-700 max-w-[60ch]">Dignity first. Wild harvests create income that allows families to remain in their communities, strengthen local services, and plan for the future. We work through our Bolivian partner and support value flowing to producers through clear, quality-based programs.</p>
             <p className="mt-2 text-sm muted">Echoing principles highlighted on foodbynature.org</p>
           </div>
           <div className="card p-6 text-left">
             <h3 className={`${playfair.className} tracking-[0.012em]`}>Forest</h3>
-            <p className="mt-2 text-stone-700 max-w-[60ch]">Keep forests standing. Choose foods made in coexistence with living ecosystems instead of clearing land.</p>
+            <p className="mt-2 text-stone-700 max-w-[60ch]">Keep the forest standing. By sourcing from native trees within mixed, living ecosystems, we help maintain habitat, protect biodiversity, and reduce the pressure to clear land. Forest-first is not a slogan—it is the standard we choose for every purchase.</p>
             <p className="mt-2 text-sm muted">Zero-deforestation sourcing stance</p>
           </div>
           <div className="card p-6 text-left">
             <h3 className={`${playfair.className} tracking-[0.012em]`}>Fair Value</h3>
-            <p className="mt-2 text-stone-700 max-w-[60ch]">Select lower-CO₂ options and value chains aligned with human dignity and nature-positive outcomes.</p>
+            <p className="mt-2 text-stone-700 max-w-[60ch]">Quality deserves recognition. We align with transparent pricing through our partner, prioritize long-term relationships, and share information about our costs and commitments as we grow. Luxury here means doing things properly—measured, respectful, and open about the value behind each product.</p>
             <p className="mt-2 text-sm muted">Clear pricing and program premiums</p>
           </div>
         </div>

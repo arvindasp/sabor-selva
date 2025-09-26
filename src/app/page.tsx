@@ -72,8 +72,7 @@ export default function HomePage() {
         <FadeIn className="max-w-3xl mx-auto">
           <div className="card p-6 md:p-8">
             <p className="prose-basic">
-              Write a brief introduction about the company here. Share your mission,
-              origins, and what makes your products unique. Keep it concise and warm.
+              Sabor Selva crafts premium chocolate and coffee from wild-grown cacao and forest coffee in Bolivia. We partner with a trusted local company to source transparently, honoring people and place. Every bar and bag is made to feel refined and timeless—luxury that keeps the rainforest standing.
             </p>
           </div>
         </FadeIn>
@@ -88,8 +87,7 @@ export default function HomePage() {
               <div className="card p-6 md:p-8">
                 <h3 className={`${playfair.className} mb-3`}>Our Cacao</h3>
                 <p className="text-[0.98rem] leading-relaxed">
-                  Placeholder text about your cacao sourcing, flavor, and the forests
-                  it helps preserve. Replace this with your own copy.
+                  Our cacao is gathered from native trees that grow beneath a living canopy. The fruit is harvested by hand, then carefully fermented and dried to preserve its natural character. The result is an elegant, layered flavor—distinct to the forest itself.
                 </p>
               </div>
               <div className="card flex items-center justify-center h-44 md:h-56 ring-line bg-[#f3f4f6]">
@@ -120,8 +118,7 @@ export default function HomePage() {
               <div className="card p-6 md:p-8">
                 <h3 className={`${playfair.className} mb-3`}>Forest-First Sourcing</h3>
                 <p className="text-[0.98rem] leading-relaxed">
-                  Placeholder text about traceability, fair wages, and environmental
-                  stewardship. Replace with the story you want to tell.
+                  We choose value chains that work with nature, not against it. Wild harvests avoid clearing land, respect biodiversity, and support communities who live in and around the forest. We purchase via our Bolivian partner and align with their producer-payment program, prioritizing traceability, fair value, and long-term relationships.
                 </p>
               </div>
               <div className="card flex items-center justify-center h-44 md:h-56 ring-line bg-[#f3f4f6]">
@@ -153,8 +150,7 @@ export default function HomePage() {
         <FadeIn className="max-w-4xl mx-auto">
           <div className="card p-8 md:p-12">
             <p className="prose-basic text-lg">
-              Bigger text box for a concluding message or a deeper dive. You can
-              replace this with your final content later.
+              Sabor Selva exists to show that exceptional taste and ecological care can be one and the same. We focus on wild-grown ingredients, small-scale post-harvest care, and transparent purchasing through our Bolivian partner. Our aim is simple: create products worthy of a special moment, while helping make it possible for forests—and the people who protect them—to thrive. We are building for the long term: slow expansions, considered collaborations, and disclosures as our sourcing deepens. Until then, enjoy the purity of origin in every bar and bag, and know that your choice supports dignity, continuity, and the living rainforest. Where to find us (Stockists and cafés will be listed here as they launch.)
             </p>
           </div>
         </FadeIn>
