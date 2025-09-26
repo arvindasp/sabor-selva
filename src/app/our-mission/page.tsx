@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import { Playfair_Display } from "next/font/google";
 import HowWeWorkGallery, { type GalleryItem } from "@/components/HowWeWorkGallery";
 
@@ -46,149 +45,152 @@ export default function MissionPage() {
     { src: "/how-5.jpg", alt: "How we work image 5", text: "Quality premiums reward craft and careful work." },
     { src: "/how-6.jpg", alt: "How we work image 6", text: "Transport links producers to markets with transparency." },
   ];
+
   return (
     <main>
-      {/* HERO */}
-      <section
-        className="relative left-1/2 -translate-x-1/2 w-screen h-[70vh] min-h-[460px] flex items-center justify-center text-center overflow-hidden"
-      >
-        <Image
-          src="/mission-hero.jpg"
-          alt="Our Mission hero image"
-          fill
-          priority
-          quality={100}
-          sizes="100vw"
-          className="object-cover"
-        />
-        <div className="absolute inset-0 z-20 bg-black/30" />
-        <div className="relative z-30 px-4">
-          <h1
-            className={`${playfair.className} tracking-wide-hero drop-shadow-[0_2px_18px_rgba(0,0,0,0.45)] text-5xl md:text-7xl`}
-            style={{ color: "#ffffff" }}
-          >
-            Our Mission
-          </h1>
+      {/* 1) Our Mission — People • Forest • Fair Value */}
+      <section className="container section">
+        <div className="card-soft max-w-4xl mx-auto p-8 sm:p-10 text-center">
+          <div style={{ height: 1, backgroundColor: "rgba(191,160,106,0.3)" }} />
+          <div className="mt-6">
+            <h1 className={`${playfair.className} tracking-[0.02em]`}>Our Mission</h1>
+            <p className="muted uppercase tracking-[0.22em] mt-2 text-xs">Salva la Selva</p>
+            <p className="mt-4 max-w-[60ch] mx-auto text-stone-700 text-balance">
+              Food choices shape nature. Roughly 30% of global CO₂ and 50–80% of nature loss come from how the world eats. Our mission is to pick supply chains that co-exist with nature, not replace it.
+            </p>
+            <p className="mt-2 max-w-[60ch] mx-auto text-stone-700">Inspired by partners and resources like foodbynature.org.</p>
+          </div>
+        </div>
+
+        <div className="grid gap-5 md:grid-cols-3 mt-8">
+          <div className="card p-6 text-left">
+            <h3 className={`${playfair.className} tracking-[0.012em]`}>People</h3>
+            <p className="mt-2 text-stone-700 max-w-[60ch]">Dignity, safety, and options in-place: access to education, basic health, and fair income from the forest.</p>
+            <p className="mt-2 text-sm muted">Echoing principles highlighted on foodbynature.org</p>
+          </div>
+          <div className="card p-6 text-left">
+            <h3 className={`${playfair.className} tracking-[0.012em]`}>Forest</h3>
+            <p className="mt-2 text-stone-700 max-w-[60ch]">Keep forests standing. Choose foods made in coexistence with living ecosystems instead of clearing land.</p>
+            <p className="mt-2 text-sm muted">Zero-deforestation sourcing stance</p>
+          </div>
+          <div className="card p-6 text-left">
+            <h3 className={`${playfair.className} tracking-[0.012em]`}>Fair Value</h3>
+            <p className="mt-2 text-stone-700 max-w-[60ch]">Select lower-CO₂ options and value chains aligned with human dignity and nature-positive outcomes.</p>
+            <p className="mt-2 text-sm muted">Clear pricing and program premiums</p>
+          </div>
         </div>
       </section>
 
-      {/* KPI STRIP */}
+      {/* Keep existing HOW WE WORK section unchanged */}
       <section className="container section">
-        <div className="grid gap-4 sm:gap-6 md:grid-cols-3">
-          <div className="card p-5 sm:p-6 text-center">
-            <h3 className="font-serif tracking-[0.012em]">Hectares Linked to Sourcing</h3>
-            <div className="mt-1 text-2xl font-bold">TBD hectares</div>
-          </div>
-          <div className="card p-5 sm:p-6 text-center">
-            <h3 className="font-serif tracking-[0.012em]">Families Supported</h3>
-            <div className="mt-1 text-2xl font-bold">TBD households</div>
-          </div>
-          <div className="card p-5 sm:p-6 text-center">
-            <h3 className="font-serif tracking-[0.012em]">Price vs Commodity</h3>
-            <div className="mt-1 text-2xl font-bold">TBD × baseline</div>
-          </div>
-        </div>
-        <p className="mt-3 text-sm muted">Figures shown are placeholders and will be updated.</p>
-      </section>
-
-      {/* HOW WE WORK (image gallery with lightbox, 6 items) */}
-      <section className="container section">
-        <h2 className="font-serif tracking-[0.012em] text-stone-900">How We Work</h2>
+        <h2 className={`${playfair.className} tracking-[0.012em] text-stone-900`}>How We Work</h2>
         <div className="mt-6">
           <HowWeWorkGallery items={steps} />
         </div>
       </section>
 
-      {/* VALUE CHAIN TRANSPARENCY */}
+      {/* 2) Why Wild Chocolate — Forest-First vs Plantation */}
       <section className="container section">
-        <h2 className="font-serif tracking-[0.012em] text-stone-900">Value Chain Transparency</h2>
-        <p className="mt-2 text-stone-700 max-w-[60ch]">
-          We align pricing with producer payment programs and post-harvest services via our partner in Bolivia. The table below shows how we structure value.
-        </p>
-
-        <div className="mt-6 overflow-x-auto">
-          <table className="min-w-full text-sm">
-            <thead>
-              <tr className="text-left">
-                <th className="py-3 pr-4">Component</th>
-                <th className="py-3 pr-4">Definition</th>
-                <th className="py-3 pr-0">Placeholder Value</th>
-              </tr>
-            </thead>
-            <tbody>
-              {[
-                { c: "Commodity Baseline", d: "Market reference price at time of purchase (USD/kg)", v: "[0.00]" },
-                { c: "Farm-Gate Base (partner)", d: "Base price paid to producers by partner (USD/kg)", v: "[0.00]" },
-                { c: "Quality Premium", d: "Premium for fermentation, moisture, sorting, etc.", v: "[0.00]" },
-                { c: "Services & Logistics", d: "Local processing, storage, and transport to export", v: "[0.00]" },
-                { c: "Total at Origin", d: "Sum of partner payments and services", v: "[0.00]" },
-                { c: "Our Purchase Price", d: "Price we pay to partner (incoterm notes)", v: "[0.00]" },
-              ].map((row, i) => (
-                <tr key={i} className="border-t">
-                  <td className="py-3 pr-4 font-medium">{row.c}</td>
-                  <td className="py-3 pr-4 text-stone-700">{row.d}</td>
-                  <td className="py-3 pr-0">{row.v}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        <p className="mt-3 text-sm muted max-w-[60ch]">
-          We buy via Saltus in Bolivia. Their producer payment program underpins farm-gate and quality premiums. We publish what we pay them and update these values as we verify.
-        </p>
-        <div className="mt-3">
-          <a
-            href="https://www.en.saltuschocolate.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-outline"
-          >
-            Visit Saltus
-          </a>
-        </div>
-      </section>
-
-      {/* CONSERVATION & BIODIVERSITY */}
-      <section className="container section">
-        <h2 className="font-serif tracking-[0.012em] text-stone-900">Conservation &amp; Biodiversity</h2>
-        <div className="mt-2 grid gap-6 md:grid-cols-2 items-start">
-          <div>
-            <p className="text-stone-800 max-w-[60ch]">
-              Our stance centers on wild-grown ingredients and forest-friendly logistics. We prioritize biodiversity and traceability at each step.
-            </p>
-            <ul className="mt-3 list-disc pl-5 space-y-2 text-stone-700">
-              <li>Wild-grown and zero-deforestation stance.</li>
-              <li>Habitat-friendly harvesting windows.</li>
-              <li>Mixed-species mosaics &amp; biodiversity first.</li>
-              <li>Traceable lots and careful transport.</li>
+        <div className="grid gap-8 md:grid-cols-2 items-center">
+          <Placeholder label="wild-cacao.jpg" height="h-[320px] sm:h-[380px] md:h-[440px]" className="rounded-xl-hero ring-line shadow-soft" />
+          <div className="max-w-[60ch]">
+            <h2 className={`${playfair.className} tracking-[0.012em]`}>Why Wild Chocolate</h2>
+            <ul className="mt-3 space-y-3 text-stone-800">
+              <li className="flex items-start gap-3">
+                <span aria-hidden className="mt-1 text-emerald-700">{/* leaf */}
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M4 20c8 0 12-6 12-12V4H8C2 4 2 10 2 12s2 8 8 8Z"/></svg>
+                </span>
+                <p>Forest intact: cacao gathered from original wild trees in Bolivian rainforest, not plantations.</p>
+              </li>
+              <li className="flex items-start gap-3">
+                <span aria-hidden className="mt-1 text-emerald-700">{/* shield */}
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 3l7 4v6c0 5-3.5 7.5-7 8-3.5-.5-7-3-7-8V7l7-4Z"/></svg>
+                </span>
+                <p>Lower impact: avoids slash &amp; burn associated with some plantations; gives value to a living forest.</p>
+              </li>
+              <li className="flex items-start gap-3">
+                <span aria-hidden className="mt-1 text-emerald-700">{/* globe */}
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>
+                </span>
+                <p>Lower footprint: partners cite ~50–75% lower CO₂ vs. plantation dark chocolate (&ldquo;source: partner&rdquo; placeholder). Approx. 1.21 kg CO₂ per kg of wild dark chocolate noted.</p>
+              </li>
             </ul>
-          </div>
-          <div className="grid gap-4">
-            <Placeholder label="conservation-1.jpg" height="h-[220px] sm:h-[260px] md:h-[300px]" />
-            <Placeholder label="conservation-2.jpg" height="h-[220px] sm:h-[260px] md:h-[300px]" />
+            <div className="mt-4 flex flex-wrap gap-2">
+              <span className="chip">Forest-grown</span>
+              <span className="chip">No pesticides/irrigation claimed</span>
+              <span className="chip">CO₂ −50–75% (source)</span>
+              <span className="chip">Bolivia origin</span>
+            </div>
+            <p className="mt-3 text-xs muted">Figures shown reflect partner sources; we will publish verified numbers as available.</p>
+            <p className="mt-2 text-xs muted">Community-led fruit collection in forests; context differs from plantation labor settings, and Bolivia has strong child-labor legislation.</p>
           </div>
         </div>
       </section>
 
-      {/* PARTNER HIGHLIGHT — Saltus */}
+      {/* 3) Community & Partner Commitments — Saltus & Local Outcomes */}
       <section className="container section">
-        <div className="card p-6 sm:p-7">
-          <h2 className="font-serif tracking-[0.012em] text-stone-900">Our Partner in Bolivia</h2>
+        <div className="card p-7">
+          <h2 className={`${playfair.className} tracking-[0.012em]`}>Our Partner in Bolivia</h2>
           <p className="mt-2 text-stone-700 max-w-[60ch]">
-            We work with <a href="https://www.en.saltuschocolate.com/" target="_blank" rel="noopener noreferrer" className="underline decoration-amber-500/70 hover:decoration-amber-600">Saltus</a>, whose producer payment programs and quality services support clear, quality-driven value chains.
+            Purchases go through Saltus in Bolivia. Their programs underpin farm-gate and quality premiums. We will publish what we pay and update as verified.
           </p>
-        </div>
-      </section>
-
-      {/* CTA — Explore Products */}
-      <section className="container section">
-        <div className="card p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div>
-            <h3 className="font-serif tracking-[0.012em]">Discover the flavors of the forest.</h3>
-            <p className="text-stone-700 max-w-[60ch]">Explore limited lots and careful roasts shaped by biodiversity-first sourcing.</p>
+          <div className="mt-4 flex flex-wrap gap-3">
+            <a href="https://www.en.saltuschocolate.com/" target="_blank" rel="noopener noreferrer" className="btn btn-outline">Visit Saltus</a>
+            <Link href="/about" className="btn">Read Our Values</Link>
           </div>
-        <Link href="/#products" className="btn btn-primary">Explore Products</Link>
+        </div>
+
+        <div className="grid gap-5 md:grid-cols-3 mt-6">
+          <div className="card overflow-hidden">
+            <Placeholder label="livelihoods.jpg" height="h-[200px] sm:h-[220px] md:h-[240px]" />
+            <div className="p-5">
+              <h3 className={`${playfair.className} tracking-[0.012em]`}>Dignified Livelihoods</h3>
+              <p className="mt-1 text-stone-700">Income from wild cacao supports staying in place and living with dignity.</p>
+            </div>
+          </div>
+          <div className="card overflow-hidden">
+            <Placeholder label="education.jpg" height="h-[200px] sm:h-[220px] md:h-[240px]" />
+            <div className="p-5">
+              <h3 className={`${playfair.className} tracking-[0.012em]`}>Education Access</h3>
+              <p className="mt-1 text-stone-700">Schools in villages, even at small scale (e.g., ~20 families).</p>
+            </div>
+          </div>
+          <div className="card overflow-hidden">
+            <Placeholder label="infrastructure.jpg" height="h-[200px] sm:h-[220px] md:h-[240px]" />
+            <div className="p-5">
+              <h3 className={`${playfair.className} tracking-[0.012em]`}>Modern Infrastructure</h3>
+              <p className="mt-1 text-stone-700">Solar power and internet are emerging in and around forest communities.</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="card-soft p-6 mt-6 max-w-3xl">
+          <h3 className={`${playfair.className} tracking-[0.012em]`}>Value Chain (Mini)</h3>
+          <div className="mt-3 overflow-x-auto">
+            <table className="min-w-full text-sm">
+              <thead>
+                <tr className="text-left">
+                  <th className="py-2 pr-4">Component</th>
+                  <th className="py-2 pr-4">Definition</th>
+                  <th className="py-2 pr-0">Placeholder</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  { c: "Farm-Gate Base", d: "Partner program price (USD/kg)", v: "[0.00]" },
+                  { c: "Quality Premium", d: "Fermentation, moisture, sorting", v: "[0.00]" },
+                  { c: "Services & Logistics", d: "Local processing and transport", v: "[0.00]" },
+                ].map((row, i) => (
+                  <tr key={i} className="border-t">
+                    <td className="py-2 pr-4 font-medium">{row.c}</td>
+                    <td className="py-2 pr-4 text-stone-700">{row.d}</td>
+                    <td className="py-2 pr-0">{row.v}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-3 text-xs muted">We will publish a detailed disclosure and update figures as they are verified.</p>
         </div>
       </section>
     </main>

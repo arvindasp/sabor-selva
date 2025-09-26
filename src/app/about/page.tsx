@@ -40,7 +40,7 @@ export default function AboutPage() {
     <main>
       {/* Hero (full-bleed like home) */}
       <section
-        className="relative left-1/2 -translate-x-1/2 w-screen h-[70vh] min-h-[460px] flex items-center justify-center text-center overflow-hidden"
+        className="relative left-1/2 -translate-x-1/2 w-screen h-[60vh] min-h-[420px] flex items-center justify-center text-center overflow-hidden"
       >
         <Image
           src="/about-hero.jpg"
@@ -50,6 +50,7 @@ export default function AboutPage() {
           quality={100}
           sizes="100vw"
           className="object-cover"
+          style={{ objectPosition: "center 35%" }}
         />
         <div className="absolute inset-0 z-20 bg-black/30" />
         <div className="relative z-30 px-4">
@@ -126,13 +127,13 @@ export default function AboutPage() {
       <section className="container section">
         <div className="grid grid-cols-2 md:grid-cols-3 gap-5 sm:gap-6">
           {/* Item 1 */}
-          <figure className="group relative h-[280px] sm:h-[340px] md:h-[420px] rounded-xl-hero ring-line overflow-hidden shadow-soft">
+          <figure className="group relative h-[240px] sm:h-[300px] md:h-[340px] rounded-xl-hero ring-line overflow-hidden shadow-soft">
             <Image
               src="/about-1.jpg"
               alt="About photo 1"
               fill
-              quality={95}
-              sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+              quality={100}
+              sizes="(min-width: 1280px) 40vw, (min-width: 1024px) 45vw, (min-width: 640px) 50vw, 100vw"
               className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
             />
             {/* Gold micro-dot accent */}
@@ -142,13 +143,13 @@ export default function AboutPage() {
           </figure>
 
           {/* Item 2 */}
-          <figure className="group relative h-[280px] sm:h-[340px] md:h-[420px] rounded-xl-hero ring-line overflow-hidden shadow-soft">
+          <figure className="group relative h-[240px] sm:h-[300px] md:h-[340px] rounded-xl-hero ring-line overflow-hidden shadow-soft">
             <Image
               src="/about-2.jpg"
               alt="About photo 2"
               fill
-              quality={95}
-              sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+              quality={100}
+              sizes="(min-width: 1280px) 40vw, (min-width: 1024px) 45vw, (min-width: 640px) 50vw, 100vw"
               className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
             />
             <span aria-hidden className="absolute top-3 right-3 h-1.5 w-1.5 rounded-full bg-[var(--gold)] shadow-subtle" />
@@ -156,13 +157,13 @@ export default function AboutPage() {
           </figure>
 
           {/* Item 3 */}
-          <figure className="group relative h-[280px] sm:h-[340px] md:h-[420px] rounded-xl-hero ring-line overflow-hidden shadow-soft">
+          <figure className="group relative h-[240px] sm:h-[300px] md:h-[340px] rounded-xl-hero ring-line overflow-hidden shadow-soft">
             <Image
               src="/about-3.jpg"
               alt="About photo 3"
               fill
-              quality={95}
-              sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+              quality={100}
+              sizes="(min-width: 1280px) 40vw, (min-width: 1024px) 45vw, (min-width: 640px) 50vw, 100vw"
               className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
             />
             <span aria-hidden className="absolute top-3 right-3 h-1.5 w-1.5 rounded-full bg-[var(--gold)] shadow-subtle" />

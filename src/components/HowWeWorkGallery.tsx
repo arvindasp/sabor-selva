@@ -70,13 +70,13 @@ export default function HowWeWorkGallery({ items }: { items: GalleryItem[] }) {
           <div className="rounded-xl-hero ring-line shadow-soft overflow-hidden bg-[var(--surface)]">
             <div style={{ height: 1, backgroundColor: "rgba(191,160,106,0.3)" }} />
             <div className="grid md:grid-cols-2 items-stretch">
-              <div className="relative min-h-[320px] sm:min-h-[380px] md:min-h-[420px] lg:min-h-[480px] bg-black">
+              <div className="relative min-h-[320px] sm:min-h-[360px] md:min-h-[400px] lg:min-h-[440px] bg-black">
                 <Image
                   src={items[open].src}
                   alt={items[open].alt}
                   fill
                   quality={100}
-                  sizes="(min-width: 1024px) 50vw, 90vw"
+                  sizes="(min-width: 1280px) 900px, (min-width: 1024px) 720px, 95vw"
                   className="object-cover"
                   priority
                 />
