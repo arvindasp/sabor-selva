@@ -172,6 +172,32 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* What is Wild Chocolate */}
+      <section className="container section">
+        <div className="grid gap-8 md:grid-cols-2 items-center">
+          <div>
+            <Placeholder label="wild-what.jpg" height="h-[320px] sm:h-[380px] md:h-[420px]" />
+          </div>
+          <div className="max-w-[60ch]">
+            <h2 className={`${playfair.className} tracking-[0.012em] text-2xl sm:text-3xl text-stone-900`}>
+              What Is Wild Chocolate
+            </h2>
+            <p className="mt-3 text-stone-800">
+              Wild chocolate comes from cacao that grows within existing rainforest ecosystems, collected from original trees rather than plantation rows. Fruit is gathered seasonally, then fermented and dried with care close to where it was harvested.
+            </p>
+            <p className="mt-3 text-stone-800">
+              By working with the forest, not against it, producers keep canopies intact and soils alive. Minimal inputs and short logistics preserve character and a sense of place in the final chocolate.
+            </p>
+            <ul className="mt-4 list-disc pl-5 marker:text-emerald-700 text-stone-800 space-y-2">
+              <li>Distinct taste: bright fruit, floral lift, and layered cocoa.</li>
+              <li>Textural finesse: gentle fermentation yields clean, elegant lines.</li>
+              <li>Terroir nuance: microregion and season show up in each batch.</li>
+            </ul>
+            <p className="mt-3 text-sm muted">Short, replaceable copy; adjust to your voice anytime.</p>
+          </div>
+        </div>
+      </section>
+
       {/* Partner callout (Saltus) */}
       <section className="container section">
         <div className="card p-6 sm:p-7">
