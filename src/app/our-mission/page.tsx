@@ -16,12 +16,48 @@ export const metadata = {
 
 export default function MissionPage() {
   const steps: GalleryItem[] = [
-    { src: "/how-1.jpg", alt: "How we work image 1", text: "Selective wild harvest preserves canopy and habitat." },
-    { src: "/how-2.jpg", alt: "How we work image 2", text: "Careful picking and sorting at collection points." },
-    { src: "/how-3.jpg", alt: "How we work image 3", text: "Post-harvest handling supports clean, traceable flavor." },
-    { src: "/how-4.jpg", alt: "How we work image 4", text: "Community hubs connect value, logistics, and services." },
-    { src: "/how-5.jpg", alt: "How we work image 5", text: "Quality premiums reward craft and careful work." },
-    { src: "/how-6.jpg", alt: "How we work image 6", text: "Transport links producers to markets with transparency." },
+    {
+      title: "LEGACY",
+      body:
+        "Wild cacao thrives under a 10-meter jungle canopy. Preserving this ecology is the starting point of our craft.",
+      src: "/how-1.jpg",
+      alt: "Jungle canopy with wild cacao trees in their natural habitat",
+    },
+    {
+      title: "HARVEST",
+      body:
+        "Forest families gently loosen ripe cacao pods with long poles—knowledge passed down through generations.",
+      src: "/how-2.jpg",
+      alt: "Hands using long poles to reach ripe cacao pods",
+    },
+    {
+      title: "FERMENTATION",
+      body:
+        "Beans are removed and naturally fermented in cloth within wicker baskets to release the fruit pulp and develop aroma.",
+      src: "/how-3.jpg",
+      alt: "Cacao beans fermenting in cloth and wicker baskets",
+    },
+    {
+      title: "DRYING",
+      body:
+        "Post-fermentation, beans dry on tarps or raised tables under the sun—stabilizing flavor and preserving quality.",
+      src: "/how-4.jpg",
+      alt: "Cacao beans drying on tarpaulins or raised tables in sunlight",
+    },
+    {
+      title: "COMMUNITY",
+      body:
+        "Every bar sustains dignified livelihoods, helping families remain in their forest communities.",
+      src: "/how-5.jpg",
+      alt: "Village life with people in forest communities",
+    },
+    {
+      title: "FUTURE",
+      body:
+        "Our purchases support solar power and internet access—so the next generation can stay, study, and steward the forest.",
+      src: "/how-6.jpg",
+      alt: "Solar panels and learning in a village setting",
+    },
   ];
 
   return (

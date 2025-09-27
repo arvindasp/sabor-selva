@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import AboutThumbGallery from "@/components/AboutThumbGallery";
 import SectionHeading from "@/components/SectionHeading";
 import { Card, SoftCard } from "@/components/Card";
 import CardImage from "@/components/CardImage";
@@ -91,15 +90,16 @@ export default function AboutPage() {
 
           {/* Near-square image with ring + soft shadow + subtle texture overlay */}
           <div className="relative">
-            <CardImage alt="About landscape placeholder image" heightClass="h-[320px] sm:h-[380px] md:h-[420px]" />
+            <CardImage
+              src="/about-2.jpg"
+              alt="Sourcing and place image"
+              heightClass="h-[320px] sm:h-[380px] md:h-[420px]"
+            />
           </div>
         </div>
       </section>
 
-      {/* Three-image gallery — aligned row + click-to-enlarge lightbox */}
-      <section className="container section">
-        <AboutThumbGallery />
-      </section>
+      {/* Removed gallery section for a cleaner layout */}
 
       {/* What is Wild Chocolate — text first, image under; subtle framing */}
       <section className="container section">
@@ -110,7 +110,11 @@ export default function AboutPage() {
           </p>
         </div>
         <div className="mt-8">
-          <CardImage alt="What is wild chocolate placeholder image" heightClass="h-[320px] sm:h-[380px] md:h-[420px]" />
+          <CardImage
+            src="/about-1.jpg"
+            alt="What is wild chocolate image"
+            heightClass="h-[320px] sm:h-[380px] md:h-[420px]"
+          />
         </div>
       </section>
 

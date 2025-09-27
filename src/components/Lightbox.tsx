@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 
 type LightboxProps = {
   open: boolean;
@@ -45,13 +46,16 @@ export default function Lightbox({ open, onClose, onPrev, onNext, label, childre
 
   if (!open) return null;
 
-  return (
-    <div className="fixed inset-0 z-[95] flex items-center justify-center">
+  // Always portal to body to avoid ancestor stacking/overflow quirks
+  const portalRoot = typeof window !== "undefined" ? document.body : null;
+
+  const node = (
+    <div className="fixed inset-0 z-[9999] grid place-items-center">
       {/* Backdrop (warm, dim) */}
       <button
         aria-label="Close"
         onClick={onClose}
-        className="absolute inset-0 bg-[rgba(191,160,106,0.24)] motion-safe:transition-opacity motion-safe:duration-300"
+        className="absolute inset-0 bg-[rgba(12,20,16,0.55)] motion-safe:transition-opacity motion-safe:duration-300"
       />
 
       {/* Dialog */}
@@ -59,7 +63,7 @@ export default function Lightbox({ open, onClose, onPrev, onNext, label, childre
         role="dialog"
         aria-modal="true"
         aria-label={label}
-        className="relative z-[100] w-[92vw] max-w-5xl rounded-xl-hero overflow-hidden ring-line shadow-soft bg-[var(--surface)] motion-safe:transition-all motion-safe:duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]"
+        className="relative z-[100] w-[92vw] max-w-[840px] max-h-[92vh] overflow-y-auto rounded-[12px] ring-line shadow-soft bg-[var(--surface)] motion-safe:transition-all motion-safe:duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-safe:animate-[popIn_320ms_cubic-bezier(0.22,1,0.36,1)] outline outline-2 outline-[var(--gold)]/50"
       >
         {children}
         <button
@@ -74,4 +78,6 @@ export default function Lightbox({ open, onClose, onPrev, onNext, label, childre
       </div>
     </div>
   );
+
+  return portalRoot ? createPortal(node, portalRoot) : node;
 }
