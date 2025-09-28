@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import SectionHeading from "@/components/SectionHeading";
+import HowWeWorkGallery, { type GalleryItem } from "@/components/HowWeWorkGallery";
 import { Card, SoftCard } from "@/components/Card";
 import CardImage from "@/components/CardImage";
 
@@ -13,6 +14,51 @@ export const metadata = {
 
 
 export default function AboutPage() {
+  const steps: GalleryItem[] = [
+    {
+      title: "LEGACY",
+      body:
+        "Wild cacao thrives under a 10-meter jungle canopy. Preserving this ecology is the starting point of our craft.",
+      src: "/how-1.jpg",
+      alt: "Jungle canopy with wild cacao trees in their natural habitat",
+    },
+    {
+      title: "HARVEST",
+      body:
+        "Forest families gently loosen ripe cacao pods with long poles—knowledge passed down through generations.",
+      src: "/how-2.jpg",
+      alt: "Hands using long poles to reach ripe cacao pods",
+    },
+    {
+      title: "FERMENTATION",
+      body:
+        "Beans are removed and naturally fermented in cloth within wicker baskets to release the fruit pulp and develop aroma.",
+      src: "/how-3.jpg",
+      alt: "Cacao beans fermenting in cloth and wicker baskets",
+    },
+    {
+      title: "DRYING",
+      body:
+        "Post-fermentation, beans dry on tarps or raised tables under the sun—stabilizing flavor and preserving quality.",
+      src: "/how-4.jpg",
+      alt: "Cacao beans drying on tarpaulins or raised tables in sunlight",
+    },
+    {
+      title: "COMMUNITY",
+      body:
+        "Every bar sustains dignified livelihoods, helping families remain in their forest communities.",
+      src: "/how-5.jpg",
+      alt: "Village life with people in forest communities",
+    },
+    {
+      title: "FUTURE",
+      body:
+        "Our purchases support solar power and internet access—so the next generation can stay, study, and steward the forest.",
+      src: "/how-6.jpg",
+      alt: "Solar panels and learning in a village setting",
+    },
+  ];
+
   return (
     <main>
       {/* Hero (full-bleed like home) */}
@@ -115,6 +161,14 @@ export default function AboutPage() {
             alt="What is wild chocolate image"
             heightClass="h-[320px] sm:h-[380px] md:h-[420px]"
           />
+        </div>
+      </section>
+
+      {/* How We Work — moved from Our Mission */}
+      <section className="container section">
+        <SectionHeading as="h2" className="text-stone-900">How We Work</SectionHeading>
+        <div className="mt-6">
+          <HowWeWorkGallery items={steps} />
         </div>
       </section>
 

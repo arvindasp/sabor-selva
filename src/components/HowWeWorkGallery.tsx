@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Lightbox from "@/components/Lightbox";
 import { EASE_LUX } from "@/lib/ui";
 
@@ -14,6 +14,18 @@ export type GalleryItem = {
 
 export default function HowWeWorkGallery({ items }: { items: GalleryItem[] }) {
   const [open, setOpen] = useState<number | null>(null);
+  const DEBUG = true; // temporary debug overlay
+
+  useEffect(() => {
+    if (!DEBUG) return;
+    if (open === null) {
+      // eslint-disable-next-line no-console
+      console.log("HowWeWorkGallery: closed");
+    } else {
+      // eslint-disable-next-line no-console
+      console.log("HowWeWorkGallery: open", open, items[open]);
+    }
+  }, [open, DEBUG, items]);
 
   const onPrev = () => setOpen((prev) => (prev === null ? 0 : (prev - 1 + items.length) % items.length));
   const onNext = () => setOpen((prev) => (prev === null ? 0 : (prev + 1) % items.length));
@@ -51,12 +63,6 @@ export default function HowWeWorkGallery({ items }: { items: GalleryItem[] }) {
       >
         {active && (
           <div className="relative">
-            {/* Optional subtle leaf watermark */}
-            <div aria-hidden className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ maskImage: "radial-gradient(black, transparent 70%)" }}>
-              <svg viewBox="0 0 200 200" className="w-full h-full text-[#1F3A2E]">
-                <path fill="currentColor" d="M100 10c30 20 50 40 60 70-10 30-30 50-60 70-30-20-50-40-60-70 10-30 30-50 60-70z" />
-              </svg>
-            </div>
             {/* Image */}
             <div className="relative w-full overflow-hidden">
               <div className="relative aspect-[4/3] bg-stone-100">
@@ -78,6 +84,23 @@ export default function HowWeWorkGallery({ items }: { items: GalleryItem[] }) {
           </div>
         )}
       </Lightbox>
+
+      {/* Inline debug fallback overlay (bypasses Lightbox/portal) */}
+      {DEBUG && open !== null && active && (
+        <div
+          className="fixed inset-0 grid place-items-center bg-fuchsia-600/40"
+          style={{ zIndex: 2147483647 }}
+        >
+          <div className="bg-white border-[6px] border-fuchsia-600 rounded-xl max-w-[840px] w-[92vw] max-h-[92vh] overflow-auto p-4">
+            <div className="text-fuchsia-700 font-bold">DEBUG INLINE MODAL — {active.title}</div>
+            <div className="mt-3 relative aspect-[4/3] bg-stone-100">
+              <Image src={active.src} alt={active.alt} fill className="object-cover" />
+            </div>
+            <p className="mt-3 text-stone-800">{active.body}</p>
+            <button type="button" className="mt-4 chip" onClick={() => setOpen(null)}>Close debug</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
