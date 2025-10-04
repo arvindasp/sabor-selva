@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import SectionHeading from "@/components/SectionHeading";
-import HowWeWorkGallery, { type GalleryItem } from "@/components/HowWeWorkGallery";
+import { type GalleryItem } from "@/components/HowWeWorkGallery";
+import HowWeWorkSteps from "@/components/HowWeWorkSteps";
 import { Card, SoftCard } from "@/components/Card";
 import CardImage from "@/components/CardImage";
 
@@ -164,11 +165,11 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* How We Work — moved from Our Mission */}
+      {/* How We Work — side-by-side steps (text + image) */}
       <section className="container section">
         <SectionHeading as="h2" className="text-stone-900">How We Work</SectionHeading>
         <div className="mt-6">
-          <HowWeWorkGallery items={steps} />
+          <HowWeWorkSteps items={steps} />
         </div>
       </section>
 

@@ -9,12 +9,16 @@ export default function CardImage({
   heightClass,
   elevatedHover = true,
   className,
+  quality = 95,
+  sizes,
 }: {
   src?: string;
   alt: string;
   heightClass: string;
   elevatedHover?: boolean;
   className?: string;
+  quality?: number;
+  sizes?: string;
 }) {
   return (
     <div
@@ -30,7 +34,14 @@ export default function CardImage({
       )}
     >
       {src ? (
-        <Image src={src} alt={alt} fill sizes="100vw" className="object-cover" />
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          quality={Math.min(100, Math.max(1, quality))}
+          sizes={sizes ?? "(min-width: 1024px) 560px, (min-width: 768px) 50vw, 95vw"}
+          className="object-cover"
+        />
       ) : (
         <div
           className="w-full h-full bg-gradient-to-br from-emerald-100 to-emerald-200/60 grid place-items-center"
@@ -53,4 +64,3 @@ export default function CardImage({
     </div>
   );
 }
-

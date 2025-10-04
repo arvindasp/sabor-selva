@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import SectionHeading from "@/components/SectionHeading";
-import { Card } from "@/components/Card";
+import { Card, SoftCard } from "@/components/Card";
 import CardImage from "@/components/CardImage";
 import { NEAR_SQUARE_LG } from "@/lib/ui";
 
@@ -16,10 +17,29 @@ export const metadata = {
 export default function MissionPage() {
   return (
     <main>
-      {/* 1) Hero — title outside; slogan + lead inside card */}
-      <section className="container section">
-        <SectionHeading as="h1" centered>Our Mission</SectionHeading>
-        <div className="card-soft max-w-4xl mx-auto p-8 sm:p-10 mt-4 text-center">
+      {/* Hero (full-bleed like home/about) */}
+      <section
+        className="relative left-1/2 -translate-x-1/2 w-screen h-[60vh] min-h-[420px] flex items-center justify-center text-center overflow-hidden text-white"
+      >
+        <Image
+          src="/mission-hero.jpg"
+          alt="Our Mission hero image"
+          fill
+          priority
+          quality={100}
+          sizes="100vw"
+          className="object-cover"
+          style={{ objectPosition: "center 45%" }}
+        />
+        <div className="absolute inset-0 z-20 bg-black/30" />
+        <div className="relative z-30 px-4 text-white">
+          <SectionHeading as="h1" className="drop-shadow-[0_2px_18px_rgba(0,0,0,0.45)] text-white hero-title">Our Mission</SectionHeading>
+        </div>
+      </section>
+
+      {/* Slogan + lead in soft card */}
+      <section className="container section pt-8">
+        <SoftCard className="max-w-4xl mx-auto p-8 sm:p-10 text-center">
           <div style={{ height: 1, backgroundColor: "rgba(191,160,106,0.3)" }} />
           <div className="mt-6">
             <p className="muted uppercase tracking-[0.22em] text-sm sm:text-base">Salva la Selva</p>
@@ -28,7 +48,7 @@ export default function MissionPage() {
             </p>
             <p className="mt-3 max-w-[60ch] mx-auto text-stone-700">Inspired by partners and resources like foodbynature.org.</p>
           </div>
-        </div>
+        </SoftCard>
 
         {/* 2) People • Forest • Fair Value — premium cards with images */}
         <div className="grid gap-5 md:grid-cols-3 mt-10">
@@ -107,44 +127,52 @@ export default function MissionPage() {
         </div>
       </section>
 
-      {/* 3) Community & Partner Commitments — Saltus & Local Outcomes */}
+      {/* 3) Our Partner in Bolivia — redesigned for richer storytelling */}
       <section className="container section">
-        <Card className="p-6 sm:p-8">
-          <SectionHeading as="h2">Our Partner in Bolivia</SectionHeading>
-          <p className="mt-2 text-stone-700 max-w-[60ch]">
-            Purchases go through Saltus in Bolivia. Their programs underpin farm-gate and quality premiums. We will publish what we pay and update as verified.
-          </p>
-          <div className="mt-4 flex flex-wrap gap-3">
-            <a href="https://www.en.saltuschocolate.com/" target="_blank" rel="noopener noreferrer" className="btn btn-outline">Visit Saltus</a>
-            <Link href="/about" className="btn">Read Our Values</Link>
+        <div className="grid gap-8 md:grid-cols-5 items-start">
+          {/* Text column */}
+          <SoftCard className="p-6 sm:p-8 md:col-span-3">
+            <SectionHeading as="h2">Our Partner in Bolivia</SectionHeading>
+            <div className="mt-3 max-w-[62ch] text-stone-800 space-y-4">
+              <p>
+                We purchase through Saltus in Bolivia—a team focused on
+                precision fermentation, careful roasting, and value chains that
+                reward producers for quality and stewardship. Their programs
+                formalize premiums and keep more value close to the forest.
+              </p>
+              <p>
+                As we grow, we will publish what we pay and update figures as
+                they are verified. Transparency, dignity, and long-term
+                relationships guide every decision.
+              </p>
+              <ul className="list-disc pl-5 marker:text-emerald-700 space-y-2">
+                <li><strong>Producer Payment Program:</strong> farm-gate plus quality-based premiums.</li>
+                <li><strong>Traceability &amp; Quality:</strong> lot separation, clean fermentation, careful drying.</li>
+                <li><strong>Forest-First:</strong> wild harvests and agroforestry sourcing to keep forests standing.</li>
+              </ul>
+            </div>
+            <div className="mt-5 flex flex-wrap gap-3">
+              <a href="https://www.en.saltuschocolate.com/" target="_blank" rel="noopener noreferrer" className="btn btn-outline">Visit Saltus</a>
+              <Link href="/about" className="btn">Read Our Values</Link>
+            </div>
+          </SoftCard>
+
+          {/* Visual/Highlights column */}
+          <div className="md:col-span-2 space-y-4">
+            <Card className="overflow-hidden">
+              <CardImage alt="Saltus facility placeholder image" heightClass="h-[220px] sm:h-[260px] md:h-[300px]" />
+            </Card>
+            <Card className="p-6">
+              <SectionHeading as="h3">Program Highlights</SectionHeading>
+              <ul className="mt-2 text-stone-700 text-sm space-y-2">
+                <li>Quality-based premiums paid to producers</li>
+                <li>Farm-gate transparency and clear documentation</li>
+                <li>Long-term contracts and relationship building</li>
+                <li>Local processing that supports jobs</li>
+              </ul>
+            </Card>
           </div>
-        </Card>
-
-        <div className="grid gap-5 md:grid-cols-3 mt-6">
-          <Card className="overflow-hidden">
-            <CardImage alt="Dignified livelihoods placeholder image" heightClass="h-[200px] sm:h-[220px] md:h-[240px]" />
-            <div className="p-6">
-              <SectionHeading as="h3">Dignified Livelihoods</SectionHeading>
-              <p className="mt-1 text-stone-700">Income from wild cacao supports staying in place and living with dignity.</p>
-            </div>
-          </Card>
-          <Card className="overflow-hidden">
-            <CardImage alt="Education access placeholder image" heightClass="h-[200px] sm:h-[220px] md:h-[240px]" />
-            <div className="p-6">
-              <SectionHeading as="h3">Education Access</SectionHeading>
-              <p className="mt-1 text-stone-700">Schools in villages, even at small scale (e.g., ~20 families).</p>
-            </div>
-          </Card>
-          <Card className="overflow-hidden">
-            <CardImage alt="Modern infrastructure placeholder image" heightClass="h-[200px] sm:h-[220px] md:h-[240px]" />
-            <div className="p-6">
-              <SectionHeading as="h3">Modern Infrastructure</SectionHeading>
-              <p className="mt-1 text-stone-700">Solar power and internet are emerging in and around forest communities.</p>
-            </div>
-          </Card>
         </div>
-
-        {/* Value Chain mini intentionally removed per brief */}
       </section>
     </main>
   );
