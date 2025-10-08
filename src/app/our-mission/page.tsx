@@ -58,26 +58,33 @@ export default function MissionPage() {
               body:
                 "Dignity first. Wild harvests create income that allows families to remain in their communities, strengthen local services, and plan for the future. We work through our Bolivian partner and support value flowing to producers through clear, quality-based programs.",
               note: "Echoing principles highlighted on foodbynature.org",
-              ph: "people.jpg",
+              img: "/our-mission-people.jpg",
             },
             {
               title: "Forest",
               body:
                 "Keep the forest standing. By sourcing from native trees within mixed, living ecosystems, we help maintain habitat, protect biodiversity, and reduce the pressure to clear land. Forest-first is not a slogan—it is the standard we choose for every purchase.",
               note: "Zero-deforestation sourcing stance",
-              ph: "forest.jpg",
+              img: "/our-mission-forest.jpg",
             },
             {
               title: "Fair Value",
               body:
                 "Quality deserves recognition. We align with transparent pricing through our partner, prioritize long-term relationships, and share information about our costs and commitments as we grow. Luxury here means doing things properly—measured, respectful, and open about the value behind each product.",
               note: "Clear pricing and program premiums",
-              ph: "value.jpg",
+              img: "/our-mission-fairvalue.jpg",
             },
           ].map((card, i) => (
             <Card key={i} className="overflow-hidden flex flex-col">
               <div className="relative group rounded-none overflow-hidden">
-                <CardImage alt={`${card.title} image placeholder`} heightClass="h-[220px] sm:h-[240px] md:h-[260px]" className="rounded-none" />
+                <CardImage
+                  src={card.img}
+                  alt={`${card.title} image`}
+                  heightClass="h-[240px] sm:h-[260px] md:h-[300px]"
+                  quality={100}
+                  sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                  className="rounded-none"
+                />
               </div>
               <div className="p-6 flex-1">
                 <SectionHeading as="h3">{card.title}</SectionHeading>
@@ -122,8 +129,14 @@ export default function MissionPage() {
           <p className="mt-3 text-xs muted">Figures shown reflect partner sources; we will publish verified numbers as available.</p>
           <p className="mt-2 text-xs muted">Community-led fruit collection in forests; context differs from plantation labor settings, and Bolivia has strong child-labor legislation.</p>
         </div>
-        <div className="mt-8">
-          <CardImage alt="Wild cacao placeholder image" heightClass={NEAR_SQUARE_LG} />
+        <div className="mt-10">
+          <CardImage
+            src="/why-wild-chocolate.jpg"
+            alt="Why Wild Chocolate image"
+            heightClass={NEAR_SQUARE_LG}
+            quality={100}
+            sizes="(min-width: 1280px) 960px, (min-width: 1024px) 820px, 100vw"
+          />
         </div>
       </section>
 
@@ -158,10 +171,7 @@ export default function MissionPage() {
           </SoftCard>
 
           {/* Visual/Highlights column */}
-          <div className="md:col-span-2 space-y-4">
-            <Card className="overflow-hidden">
-              <CardImage alt="Saltus facility placeholder image" heightClass="h-[220px] sm:h-[260px] md:h-[300px]" />
-            </Card>
+          <div className="md:col-span-2">
             <Card className="p-6">
               <SectionHeading as="h3">Program Highlights</SectionHeading>
               <ul className="mt-2 text-stone-700 text-sm space-y-2">

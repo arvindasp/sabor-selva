@@ -4,6 +4,8 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import SectionHeading from "@/components/SectionHeading";
 import { Card } from "@/components/Card";
+import CardImage from "@/components/CardImage";
+import { NEAR_SQUARE_LG } from "@/lib/ui";
 
 function FadeIn({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   const ref = useRef<HTMLDivElement | null>(null);
@@ -73,51 +75,31 @@ export default function HomePage() {
         </FadeIn>
       </section>
 
-      {/* Three side-by-side text + image sections */}
+      {/* Two side-by-side text + image sections */}
       <section className="section">
-        <div className="flex flex-col gap-10">
+        <div className="flex flex-col gap-14">
           {/* Row 1 */}
           <FadeIn>
-            <div className="grid grid-cols-2 gap-6 items-center">
-              <Card className="p-6 md:p-8">
+            <div className="grid grid-cols-12 gap-6 md:gap-8 items-start">
+              <Card className="col-span-5 p-6 md:p-8">
                 <SectionHeading as="h3">Our Cacao</SectionHeading>
                 <p className="text-[0.98rem] leading-relaxed max-w-[60ch]">
                   Our cacao is gathered from native trees that grow beneath a living canopy. The fruit is harvested by hand, then carefully fermented and dried to preserve its natural character. The result is an elegant, layered flavor—distinct to the forest itself.
                 </p>
               </Card>
-              <Card className="flex items-center justify-center h-44 md:h-56 ring-line bg-[#f3f4f6]">
-                <span className="muted">Image Placeholder</span>
-              </Card>
+              <CardImage className="col-span-7" src="/our-cacao-home.jpg" alt="Our Cacao" heightClass={NEAR_SQUARE_LG} />
             </div>
           </FadeIn>
 
-          {/* Row 2 */}
+          {/* Row 2 (Forest-First) */}
           <FadeIn>
-            <div className="grid grid-cols-2 gap-6 items-center">
-              <Card className="order-2 p-6 md:p-8">
-                <SectionHeading as="h3">Our Coffee</SectionHeading>
-                <p className="text-[0.98rem] leading-relaxed max-w-[60ch]">
-                  Placeholder text about your coffee varieties, roasting approach, and
-                  the communities you support. Replace with your content.
-                </p>
-              </Card>
-              <Card className="order-1 md:order-1 flex items-center justify-center h-44 md:h-56 ring-line bg-[#f3f4f6]">
-                <span className="muted">Image Placeholder</span>
-              </Card>
-            </div>
-          </FadeIn>
-
-          {/* Row 3 */}
-          <FadeIn>
-            <div className="grid grid-cols-2 gap-6 items-center">
-              <Card className="p-6 md:p-8">
+            <div className="grid grid-cols-12 gap-6 md:gap-8 items-start">
+              <CardImage className="col-span-7" src="/forest-first-home.jpg" alt="Forest-First Sourcing" heightClass={NEAR_SQUARE_LG} />
+              <Card className="col-span-5 p-6 md:p-8">
                 <SectionHeading as="h3">Forest-First Sourcing</SectionHeading>
                 <p className="text-[0.98rem] leading-relaxed max-w-[60ch]">
                   We choose value chains that work with nature, not against it. Wild harvests avoid clearing land, respect biodiversity, and support communities who live in and around the forest. We purchase via our Bolivian partner and align with their producer-payment program, prioritizing traceability, fair value, and long-term relationships.
                 </p>
-              </Card>
-              <Card className="flex items-center justify-center h-44 md:h-56 ring-line bg-[#f3f4f6]">
-                <span className="muted">Image Placeholder</span>
               </Card>
             </div>
           </FadeIn>
