@@ -19,42 +19,42 @@ export default function AboutPage() {
     {
       title: "LEGACY",
       body:
-        "Wild cacao thrives under a 10-meter jungle canopy. Preserving this ecology is the starting point of our craft.",
+        "Wild cacao thrives under the Bolivian jungle canopy. Protecting this ecosystem means protecting one of the planet’s last wild cacao gene pools — the foundation of our flavor and our mission.",
       src: "/how-1.jpg",
       alt: "Jungle canopy with wild cacao trees in their natural habitat",
     },
     {
       title: "HARVEST",
       body:
-        "Forest families gently loosen ripe cacao pods with long poles—knowledge passed down through generations.",
+        "Families from forest communities collect ripe cacao pods using traditional poles, ensuring minimal impact on surrounding trees. These harvests provide income that makes it possible for families to remain in their ancestral forest homes.",
       src: "/how-2.jpg",
       alt: "Hands using long poles to reach ripe cacao pods",
     },
     {
       title: "FERMENTATION",
       body:
-        "Beans are removed and naturally fermented in cloth within wicker baskets to release the fruit pulp and develop aroma.",
+        "Beans are fermented naturally in woven baskets or cloth, allowing the pulp’s sugars to transform flavor without additives or industrial heat — a slow method that preserves both quality and tradition.",
       src: "/how-3.jpg",
       alt: "Cacao beans fermenting in cloth and wicker baskets",
     },
     {
       title: "DRYING",
       body:
-        "Post-fermentation, beans dry on tarps or raised tables under the sun—stabilizing flavor and preserving quality.",
+        "The beans are sun-dried on raised tables using only natural warmth, eliminating the need for fossil-fuel dryers and maintaining the integrity of each batch.",
       src: "/how-4.jpg",
       alt: "Cacao beans drying on tarpaulins or raised tables in sunlight",
     },
     {
       title: "COMMUNITY",
       body:
-        "Every bar sustains dignified livelihoods, helping families remain in their forest communities.",
+        "Every bar sustains fair livelihoods through transparent pricing and traceable sourcing. We follow the principles of decent work and zero child labor, helping ensure dignity and opportunity for the next generation.",
       src: "/how-5.jpg",
       alt: "Village life with people in forest communities",
     },
     {
       title: "FUTURE",
       body:
-        "Our purchases support solar power and internet access—so the next generation can stay, study, and steward the forest.",
+        "Our purchases fund local initiatives in solar power, clean water, and education access — helping young people stay, study, and steward the forest they grew up in.",
       src: "/how-6.jpg",
       alt: "Solar panels and learning in a village setting",
     },
@@ -123,14 +123,12 @@ export default function AboutPage() {
             <div className="max-w-[60ch]">
               <SectionHeading as="h2" className="text-stone-900">Sourcing &amp; Place</SectionHeading>
               <p className="mt-3 text-stone-800">
-                Our ingredients are wild-grown or agroforestry-cultivated in the
-                Bolivian lowlands—selected for flavor, biodiversity, and a fair
-                value chain that strengthens forest communities.
+                Our cacao and coffee are gathered from native trees in Bolivia’s Amazonian lowlands — where cultivation means conservation. Each harvest values biodiversity over yield, rewarding communities who protect the forest rather than clear it.
               </p>
               <ul className="mt-4 list-disc pl-5 text-stone-800 marker:text-emerald-700">
-                <li>Biodiversity-first practices and minimal intervention</li>
-                <li>Long-term partners and transparent relationships</li>
-                <li>Full traceability from forest to finished bar</li>
+                <li>Wild and agroforestry-grown crops that prevent deforestation</li>
+                <li>Fair payment programs built on ILO standards and full traceability</li>
+                <li>Transparent, long-term relationships with indigenous producers</li>
               </ul>
             </div>
           </SoftCard>
@@ -153,7 +151,7 @@ export default function AboutPage() {
         <div className="max-w-[60ch]">
           <SectionHeading as="h2" className="text-stone-900">What Is Wild Chocolate</SectionHeading>
           <p className="mt-3 text-stone-800">
-            Wild chocolate comes from cacao that grows within existing rainforest ecosystems, collected from original trees rather than plantation rows. Fruit is gathered seasonally, then fermented and dried with care close to where it was harvested.
+            Wild chocolate is cacao in its purest form — fruit collected from naturally occurring trees within living rainforest ecosystems. It’s harvested without chemicals, irrigation, or land clearing, keeping old-growth forests intact. Each pod is gathered by hand, fermented, and sun-dried near its origin — a process that preserves both aroma and ecology.
           </p>
         </div>
         <div className="mt-8">
@@ -178,9 +176,7 @@ export default function AboutPage() {
         <Card className="p-6 sm:p-8">
           <SectionHeading as="h2" className="text-stone-900">Our Partner in Bolivia</SectionHeading>
           <p className="mt-3 max-w-[58ch] text-stone-800">
-            We work with Saltus, a Bolivian maker focused on precision
-            fermentation, careful roasting, and forest-friendly value chains
-            that reward producers for quality and stewardship.
+            We partner with Saltus in Achocalla, Bolivia — a maker whose values mirror our own. Their facility treats and reuses 100% of process water, operates partly on solar power, and uses recycled glass and LED lighting to minimize its footprint. Together, we transform wild cacao into award-winning chocolate that supports both excellence and equity.
           </p>
           <div className="mt-4 flex justify-end">
             <a

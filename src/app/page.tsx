@@ -69,7 +69,7 @@ export default function HomePage() {
         <FadeIn className="max-w-3xl mx-auto">
           <Card className="p-6 md:p-8">
             <p className="prose-basic max-w-[60ch]">
-              Sabor Selva crafts premium chocolate and coffee from wild-grown cacao and forest coffee in Bolivia. We partner with a trusted local company to source transparently, honoring people and place. Every bar and bag is made to feel refined and timeless—luxury that keeps the rainforest standing.
+            Sabor Selva crafts premium chocolate and coffee from wild-grown cacao and forest coffee in Bolivia — harvested directly from the rainforest, never from plantations. Together with our Bolivian partner, we work with indigenous communities who gather cacao and coffee in harmony with the forest, providing fair income while keeping biodiversity alive. Every bar and bag represents a choice: timeless flavor that keeps the rainforest standing and supports the people who protect it.
             </p>
           </Card>
         </FadeIn>
@@ -84,8 +84,7 @@ export default function HomePage() {
               <Card className="col-span-5 p-6 md:p-8">
                 <SectionHeading as="h3">Our Cacao</SectionHeading>
                 <p className="text-[0.98rem] leading-relaxed max-w-[60ch]">
-                  Our cacao is gathered from native trees that grow beneath a living canopy. The fruit is harvested by hand, then carefully fermented and dried to preserve its natural character. The result is an elegant, layered flavor—distinct to the forest itself.
-                </p>
+                Our cacao is gathered by hand from native trees that thrive beneath a living canopy deep within the Bolivian Amazon. The fruit is collected by local families using generations-old knowledge, then fermented and sun-dried to preserve its natural complexity. Grown entirely wild — free from pesticides and irrigation — this cacao protects the forest by giving value to keeping trees standing. The result is a refined, layered flavor distinct to the forest itself.                </p>
               </Card>
               <CardImage className="col-span-7" src="/our-cacao-home.jpg" alt="Our Cacao" heightClass={NEAR_SQUARE_LG} />
             </div>
@@ -98,8 +97,7 @@ export default function HomePage() {
               <Card className="col-span-5 p-6 md:p-8">
                 <SectionHeading as="h3">Forest-First Sourcing</SectionHeading>
                 <p className="text-[0.98rem] leading-relaxed max-w-[60ch]">
-                  We choose value chains that work with nature, not against it. Wild harvests avoid clearing land, respect biodiversity, and support communities who live in and around the forest. We purchase via our Bolivian partner and align with their producer-payment program, prioritizing traceability, fair value, and long-term relationships.
-                </p>
+                We build value chains that work with nature — not against it. By sourcing wild cacao and forest coffee, we prevent the need for deforestation and ensure that local communities can thrive while keeping the rainforest intact. Our Bolivian partner follows the highest environmental and social standards: fair payment programs based on ILO principles, zero child labor, and traceable sourcing directly from indigenous territories. Every harvest supports biodiversity, cultural continuity, and sustainable livelihoods.                </p>
               </Card>
             </div>
           </FadeIn>
@@ -127,8 +125,9 @@ export default function HomePage() {
         <FadeIn className="max-w-4xl mx-auto">
           <Card className="p-6 md:p-8">
             <p className="prose-basic text-lg max-w-[60ch]">
-              Sabor Selva exists to show that exceptional taste and ecological care can be one and the same. We focus on wild-grown ingredients, small-scale post-harvest care, and transparent purchasing through our Bolivian partner. Our aim is simple: create products worthy of a special moment, while helping make it possible for forests—and the people who protect them—to thrive. We are building for the long term: slow expansions, considered collaborations, and disclosures as our sourcing deepens. Until then, enjoy the purity of origin in every bar and bag, and know that your choice supports dignity, continuity, and the living rainforest. Where to find us (Stockists and cafés will be listed here as they launch.)
-            </p>
+            Sabor Selva exists to prove that exceptional taste and ecological care can be one and the same. Our chocolate and coffee are made from wild-grown ingredients, collected responsibly by indigenous communities within the Bolivian Amazon. By choosing wild sourcing instead of plantations, we help reduce deforestation, protect rare biodiversity, and create income that lets families remain in the forest they call home.
+
+Our facility partners treat and reuse 100% of process water, use solar energy, recycled materials, and LED lighting to minimize their footprint. With every bar, we honor craftsmanship, fair wages, and the living forest that makes it all possible.            </p>
           </Card>
         </FadeIn>
       </section>

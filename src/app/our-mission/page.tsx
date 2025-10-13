@@ -44,9 +44,14 @@ export default function MissionPage() {
           <div className="mt-6">
             <p className="muted uppercase tracking-[0.22em] text-sm sm:text-base">Salva la Selva</p>
             <p className="mt-4 max-w-[60ch] mx-auto text-stone-800 text-lg sm:text-xl leading-relaxed text-balance">
-              Food choices shape nature. Roughly 30% of global CO₂ and 50–80% of nature loss come from how the world eats. Our mission is to pick supply chains that co-exist with nature, not replace it.
+              “Food choices shape nature.” Roughly 30% of global greenhouse emissions and up to 80% of biodiversity loss are linked to how we grow and consume food (FAO, 2023).
             </p>
-            <p className="mt-3 max-w-[60ch] mx-auto text-stone-700">Inspired by partners and resources like foodbynature.org.</p>
+            <p className="mt-3 max-w-[60ch] mx-auto text-stone-800 text-lg sm:text-xl leading-relaxed text-balance">
+              Sabor Selva’s mission is to prove that taste and preservation can coexist — to build supply chains that work with nature, not against it.
+            </p>
+            <p className="mt-3 max-w-[60ch] mx-auto text-stone-700">
+              Inspired by our Bolivian partners and organizations like Food by Nature, we stand for a future where production restores ecosystems instead of erasing them.
+            </p>
           </div>
         </SoftCard>
 
@@ -56,22 +61,22 @@ export default function MissionPage() {
             {
               title: "People",
               body:
-                "Dignity first. Wild harvests create income that allows families to remain in their communities, strengthen local services, and plan for the future. We work through our Bolivian partner and support value flowing to producers through clear, quality-based programs.",
-              note: "Echoing principles highlighted on foodbynature.org",
+                "Dignity first. Wild harvests create steady income that allows families to remain in the forest rather than migrate to cities. Each cacao or coffee harvest directly supports education, solar power, and clean-water projects in Amazonian communities. We align with ILO fair-labor principles and zero child-labor policy, working through Saltus’ transparent producer programs.",
+              note: "“A living forest means a living wage.”",
               img: "/our-mission-people.jpg",
             },
             {
               title: "Forest",
               body:
-                "Keep the forest standing. By sourcing from native trees within mixed, living ecosystems, we help maintain habitat, protect biodiversity, and reduce the pressure to clear land. Forest-first is not a slogan—it is the standard we choose for every purchase.",
-              note: "Zero-deforestation sourcing stance",
+                "Keep the forest standing. Every bar and bag begins inside existing rainforest ecosystems — where wild cacao grows naturally under tall canopy trees. By purchasing wild-grown cacao, we reduce deforestation pressure by up to 90% compared to plantation expansion (Food by Nature data). Each kilogram of wild chocolate emits about 1.2 kg CO₂, nearly 50–75% less than conventional dark chocolate.",
+              note: "“Protecting biodiversity is not a side effect — it’s the recipe.”",
               img: "/our-mission-forest.jpg",
             },
             {
               title: "Fair Value",
               body:
-                "Quality deserves recognition. We align with transparent pricing through our partner, prioritize long-term relationships, and share information about our costs and commitments as we grow. Luxury here means doing things properly—measured, respectful, and open about the value behind each product.",
-              note: "Clear pricing and program premiums",
+                "Quality deserves recognition. Our Bolivian partner operates on a farm-gate plus quality-premium system, ensuring producers are paid above local market averages. Transparency means we know every lot, every fermentation batch, and every partner family involved. This clarity lets us reward skill over volume — redefining luxury as measured respect for both maker and land.",
+              note: "“Luxury is not excess; it’s fairness done beautifully.”",
               img: "/our-mission-fairvalue.jpg",
             },
           ].map((card, i) => (
@@ -105,29 +110,40 @@ export default function MissionPage() {
               <span aria-hidden className="mt-1 text-emerald-700">{/* leaf */}
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M4 20c8 0 12-6 12-12V4H8C2 4 2 10 2 12s2 8 8 8Z"/></svg>
               </span>
-              <p>Forest intact: cacao gathered from original wild trees in Bolivian rainforest, not plantations.</p>
+              <p>Forest intact: Cacao is gathered from original wild trees across the Bolivian Amazon — zero deforestation, zero irrigation.</p>
             </li>
             <li className="flex items-start gap-3">
               <span aria-hidden className="mt-1 text-emerald-700">{/* shield */}
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 3l7 4v6c0 5-3.5 7.5-7 8-3.5-.5-7-3-7-8V7l7-4Z"/></svg>
               </span>
-              <p>Lower impact: avoids slash &amp; burn associated with some plantations; gives value to a living forest.</p>
+              <p>Lower impact: Avoids slash-and-burn agriculture and supports biodiversity by giving value to the living forest.</p>
             </li>
             <li className="flex items-start gap-3">
               <span aria-hidden className="mt-1 text-emerald-700">{/* globe */}
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>
               </span>
-              <p>Lower footprint: partners cite ~50–75% lower CO₂ vs. plantation dark chocolate (&ldquo;source: partner&rdquo; placeholder). Approx. 1.21 kg CO₂ per kg of wild dark chocolate noted.</p>
+              <p>Reduced footprint: Wild dark chocolate averages 1.2 kg CO₂ per kg, around 50–75% less than conventional plantation dark chocolate (partner estimates).</p>
+            </li>
+            <li className="flex items-start gap-3">
+              <span aria-hidden className="mt-1 text-emerald-700">{/* leaf */}
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M4 20c8 0 12-6 12-12V4H8C2 4 2 10 2 12s2 8 8 8Z"/></svg>
+              </span>
+              <p>Chemical-free: Naturally pesticide-free, grown without fertilizers or microplastics.</p>
+            </li>
+            <li className="flex items-start gap-3">
+              <span aria-hidden className="mt-1 text-emerald-700">{/* leaf */}
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M4 20c8 0 12-6 12-12V4H8C2 4 2 10 2 12s2 8 8 8Z"/></svg>
+              </span>
+              <p>Community-led: Collected by indigenous families under Bolivia’s strong child-labor and environmental legislation.</p>
             </li>
           </ul>
+          <p className="mt-4 italic text-stone-700">“Wild chocolate is proof that flavor and forest can share the same root.”</p>
           <div className="mt-4 flex flex-wrap gap-2">
             <span className="chip">Forest-grown</span>
             <span className="chip">No pesticides/irrigation claimed</span>
             <span className="chip">CO₂ −50–75% (source)</span>
             <span className="chip">Bolivia origin</span>
           </div>
-          <p className="mt-3 text-xs muted">Figures shown reflect partner sources; we will publish verified numbers as available.</p>
-          <p className="mt-2 text-xs muted">Community-led fruit collection in forests; context differs from plantation labor settings, and Bolivia has strong child-labor legislation.</p>
         </div>
         <div className="mt-10">
           <CardImage
@@ -148,21 +164,17 @@ export default function MissionPage() {
             <SectionHeading as="h2">Our Partner in Bolivia</SectionHeading>
             <div className="mt-3 max-w-[62ch] text-stone-800 space-y-4">
               <p>
-                We purchase through Saltus in Bolivia—a team focused on
-                precision fermentation, careful roasting, and value chains that
-                reward producers for quality and stewardship. Their programs
-                formalize premiums and keep more value close to the forest.
-              </p>
-              <p>
-                As we grow, we will publish what we pay and update figures as
-                they are verified. Transparency, dignity, and long-term
-                relationships guide every decision.
+                We work with Saltus, a Bolivian maker renowned for precision fermentation and forest-friendly production. Their facility:
               </p>
               <ul className="list-disc pl-5 marker:text-emerald-700 space-y-2">
-                <li><strong>Producer Payment Program:</strong> farm-gate plus quality-based premiums.</li>
-                <li><strong>Traceability &amp; Quality:</strong> lot separation, clean fermentation, careful drying.</li>
-                <li><strong>Forest-First:</strong> wild harvests and agroforestry sourcing to keep forests standing.</li>
+                <li>Treats and reuses 100% of process water.</li>
+                <li>Incorporates solar energy with recycled glass-bottle heat storage.</li>
+                <li>Uses LED lighting and recycled building materials to minimize waste.</li>
               </ul>
+              <p>
+                Saltus’ programs combine traceability, fair premiums, and technical training to reward quality and protect the rainforest.
+              </p>
+              <p className="italic">“Transparency and stewardship—two sides of the same bean.”</p>
             </div>
             <div className="mt-5 flex flex-wrap gap-3">
               <a href="https://www.en.saltuschocolate.com/" target="_blank" rel="noopener noreferrer" className="btn btn-outline">Visit Saltus</a>
