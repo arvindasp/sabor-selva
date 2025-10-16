@@ -8,10 +8,12 @@ import { NEAR_SQUARE_LG } from "@/lib/ui";
 
 export default function HowWeWorkSteps({ items }: { items: GalleryItem[] }) {
   return (
-    <div className="flex flex-col gap-10 sm:gap-12">
+    <div className="flex flex-col gap-28 sm:gap-32">
       {items.map((it, idx) => {
+        const reversed = idx % 2 === 1;
+
         const Text = (
-          <SoftCard key="text" className="h-full p-6 sm:p-8 flex flex-col justify-start">
+          <SoftCard key="text" className="h-full p-6 sm:p-8 md:p-10 flex flex-col justify-start">
             <div style={{ height: 1, backgroundColor: "rgba(212,175,55,0.28)" }} />
             <div className="mt-4">
               <p className="muted uppercase tracking-[0.18em] text-[0.8rem]">Step {idx + 1}</p>
@@ -26,10 +28,10 @@ export default function HowWeWorkSteps({ items }: { items: GalleryItem[] }) {
             <CardImage
               src={it.src}
               alt={it.alt}
-              heightClass="h-[260px] sm:h-[320px] md:h-[380px]"
+              heightClass="h-[280px] sm:h-[380px] md:h-[480px] lg:h-[560px]"
               className="group"
               quality={98}
-              sizes="(min-width: 1024px) 560px, (min-width: 768px) 50vw, 95vw"
+              sizes="(min-width: 1280px) 720px, (min-width: 1024px) 600px, (min-width: 768px) 50vw, 95vw"
             />
           </div>
         );
@@ -37,10 +39,16 @@ export default function HowWeWorkSteps({ items }: { items: GalleryItem[] }) {
         return (
           <div
             key={`${it.title}-${idx}`}
-            className={`${idx % 2 === 1 ? "sm:flex sm:flex-row-reverse" : "sm:flex sm:flex-row"} flex flex-col gap-6 sm:gap-8 sm:items-stretch`}
+            className="grid grid-cols-12 gap-6 md:gap-10 items-center"
           >
-            <div className="sm:w-1/2">{Text}</div>
-            <div className="sm:w-1/2">{Image}</div>
+            {/* Image */}
+            <div className={`${reversed ? "order-2" : "order-1"} col-span-6 lg:col-span-7`}>
+              {Image}
+            </div>
+            {/* Text */}
+            <div className={`${reversed ? "order-1" : "order-2"} col-span-6 lg:col-span-5`}>
+              {Text}
+            </div>
           </div>
         );
       })}

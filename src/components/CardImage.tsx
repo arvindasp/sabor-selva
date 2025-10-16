@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useRef } from "react";
 import { cx, IMG_FRAME, EASE_LUX, DUR_MED } from "@/lib/ui";
 
 export default function CardImage({
@@ -20,8 +21,10 @@ export default function CardImage({
   quality?: number;
   sizes?: string;
 }) {
+  const wrapRef = useRef<HTMLDivElement | null>(null);
   return (
     <div
+      ref={wrapRef}
       className={cx(
         IMG_FRAME,
         "bg-black/5",
@@ -41,6 +44,25 @@ export default function CardImage({
           quality={Math.min(100, Math.max(1, quality))}
           sizes={sizes ?? "(min-width: 1024px) 560px, (min-width: 768px) 50vw, 95vw"}
           className="object-cover"
+          onLoadingComplete={(img) => {
+            try {
+              const el = wrapRef.current;
+              if (!el) return;
+              const { width, height } = el.getBoundingClientRect();
+              const dpr = (globalThis as any).devicePixelRatio || 1;
+              const neededW = Math.round(width * dpr);
+              const neededH = Math.round(height * dpr);
+              if (img.naturalWidth < neededW || img.naturalHeight < neededH) {
+                // eslint-disable-next-line no-console
+                console.warn(
+                  `[Image quality] "${src}" is smaller than its rendered size. ` +
+                    `Needed at least ${neededW}x${neededH}px, but got ${img.naturalWidth}x${img.naturalHeight}.`
+                );
+              }
+            } catch {
+              // ignore
+            }
+          }}
         />
       ) : (
         <div
