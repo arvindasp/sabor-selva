@@ -178,19 +178,6 @@ function Slideshow({
                   quality={Math.min(100, Math.max(90, quality))}
                   sizes="100vw"
                   className="object-cover"
-                  onLoadingComplete={(img) => {
-                    try {
-                      const el = (document?.currentScript as any)?.parentElement ?? document.querySelector('[data-slideshow-container]');
-                      const dpr = (globalThis as any).devicePixelRatio || 1;
-                      const w = window.innerWidth * dpr;
-                      const h = (document.querySelector('[data-slideshow-height]') as HTMLElement | null)?.clientHeight || window.innerHeight * 0.65;
-                      const neededW = Math.round(w);
-                      if (img.naturalWidth < neededW) {
-                        // eslint-disable-next-line no-console
-                        console.warn(`[Image quality] Slideshow image "${src}" may be low-res. Need >= ${neededW}px width, got ${img.naturalWidth}px.`);
-                      }
-                    } catch {}
-                  }}
                 />
               </div>
             </div>

@@ -14,18 +14,7 @@ export type GalleryItem = {
 
 export default function HowWeWorkGallery({ items }: { items: GalleryItem[] }) {
   const [open, setOpen] = useState<number | null>(null);
-  const DEBUG = true; // temporary debug overlay
-
-  useEffect(() => {
-    if (!DEBUG) return;
-    if (open === null) {
-      // eslint-disable-next-line no-console
-      console.log("HowWeWorkGallery: closed");
-    } else {
-      // eslint-disable-next-line no-console
-      console.log("HowWeWorkGallery: open", open, items[open]);
-    }
-  }, [open, DEBUG, items]);
+  const DEBUG = false; // disable debug logs in production
 
   const onPrev = () => setOpen((prev) => (prev === null ? 0 : (prev - 1 + items.length) % items.length));
   const onNext = () => setOpen((prev) => (prev === null ? 0 : (prev + 1) % items.length));

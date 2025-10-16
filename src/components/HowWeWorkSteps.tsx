@@ -4,7 +4,6 @@ import SectionHeading from "@/components/SectionHeading";
 import { SoftCard } from "@/components/Card";
 import CardImage from "@/components/CardImage";
 import type { GalleryItem } from "@/components/HowWeWorkGallery";
-import { NEAR_SQUARE_LG } from "@/lib/ui";
 
 export default function HowWeWorkSteps({ items }: { items: GalleryItem[] }) {
   return (

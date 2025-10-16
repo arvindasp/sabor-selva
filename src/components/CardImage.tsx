@@ -49,11 +49,10 @@ export default function CardImage({
               const el = wrapRef.current;
               if (!el) return;
               const { width, height } = el.getBoundingClientRect();
-              const dpr = (globalThis as any).devicePixelRatio || 1;
+              const dpr = typeof window !== "undefined" && typeof window.devicePixelRatio === "number" ? window.devicePixelRatio : 1;
               const neededW = Math.round(width * dpr);
               const neededH = Math.round(height * dpr);
               if (img.naturalWidth < neededW || img.naturalHeight < neededH) {
-                // eslint-disable-next-line no-console
                 console.warn(
                   `[Image quality] "${src}" is smaller than its rendered size. ` +
                     `Needed at least ${neededW}x${neededH}px, but got ${img.naturalWidth}x${img.naturalHeight}.`
